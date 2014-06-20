@@ -1,0 +1,33 @@
+<h1>Listing publications</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Library</th>
+      <th>Isbn</th>
+      <th>Issn</th>
+      <th>Age limit</th>
+      <th>Status</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @publications.each do |publication| %>
+      <tr>
+        <td><%= publication.library %></td>
+        <td><%= publication.isbn %></td>
+        <td><%= publication.issn %></td>
+        <td><%= publication.age_limit %></td>
+        <td><%= publication.status %></td>
+        <td><%= link_to 'Show', publication %></td>
+        <td><%= link_to 'Edit', edit_publication_path(publication) %></td>
+        <td><%= link_to 'Destroy', publication, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Publication', new_publication_path %>
