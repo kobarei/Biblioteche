@@ -5,3 +5,22 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+library =
+  Library.new(
+    name: 'kobarei',
+    subdomain: 'biblio'
+  )
+
+library.save
+
+staff =
+  Staff.new(
+    name: 'Reiji Kobayashi',
+    library_id: library.id,
+    login_id: 'staff',
+    password: 'staff',
+    password_confirmation: 'staff'
+  )
+
+staff.save

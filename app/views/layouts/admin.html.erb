@@ -25,19 +25,32 @@
           <%= link_to "所蔵物", admin_publications_path %>
         </li>
         <li>
-          <a href="http://news.bootswatch.com">Blog</a>
+          <%= link_to "Users", admin_users_path  %>
+        </li>
+        <li>
+          <%= link_to "Staffs", admin_staffs_path  %>
         </li>
       </ul>
 
       <ul class="nav navbar-nav navbar-right">
         <% if current_staff %>
-          <li><%= link_to "ログアウト", admin_staff_session_path(current_staff), method: :delete %></li>
+          <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="download"><%= current_staff.name %> <span class="caret"></span></a>
+            <ul class="dropdown-menu" aria-labelledby="download">
+              <li><%= link_to "アカウント情報", admin_staff_path(current_staff) %></li>
+              <li><%= link_to "ログアウト", admin_session_path(current_staff), method: :delete %></li>
+              <li class="divider"></li>
+              <li><%= link_to "利用者ログイン", new_session_path %></li>
+            </ul>
+          </li>
         <% else %>
           <li class="dropdown">
             <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="download">Login <span class="caret"></span></a>
             <ul class="dropdown-menu" aria-labelledby="download">
-              <li><%= link_to "利用者", new_user_session_path %></li>
-              <li><%= link_to "職員", new_admin_staff_session_path %></li>
+              <li><%= link_to "利用者新規登録", new_user_path %></li>
+              <li class="divider"></li>
+              <li><%= link_to "利用者ログイン", new_session_path %></li>
+              <li><%= link_to "職員ログイン", new_admin_session_path %></li>
             </ul>
           </li>
         <% end %>

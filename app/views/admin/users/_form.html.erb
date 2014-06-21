@@ -16,8 +16,8 @@
     <%= f.text_field :name %>
   </div>
   <div class="field">
-    <%= f.label :library_id %><br>
-    <%= f.text_field :library_id %>
+    <%= f.label :age %><br>
+    <%= f.number_field :age %>
   </div>
   <div class="field">
     <%= f.label :login_id %><br>
@@ -28,10 +28,10 @@
     <%= f.password_field :password %>
   </div>
   <div class="field">
-    <%= f.label :age %><br>
-    <%= f.number_field :age %>
+    <%= f.label :password_confirmation %><br>
+    <%= f.password_field :password_confirmation %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit class: "btn btn-primary" %>
   </div>
 <% end %>

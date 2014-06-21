@@ -1,22 +1,24 @@
-class Admin::StaffSessionsController < AdminController
+class SessionsController < ApplicationController
   before_action :subdomain_login_id, only: [:create]
 
   def new
+    @user = User.new
   end
 
   def create
-    staff = Staff.find_by login_id: params[:session][:login_id]
-    if staff && staff.authenticate(params[:session][:password])
-      session[:staff_id] = staff.id
-      redirect_to [:admin, staff]
+    user = User.find_by login_id: params[:session][:login_id]
+    if user && user.authenticate(params[:session][:password])
+      session[:user_id] = user.id
+      redirect_to user
     else
+      @user = User.new
       flash.now[:alert] = "Invalid"
       render "new"
     end
   end
 
   def destroy
-    session[:staff_id] = nil
+    session[:user_id] = nil
     redirect_to root_path
   end
 

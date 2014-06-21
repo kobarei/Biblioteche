@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140621042550) do
+ActiveRecord::Schema.define(version: 20140621190642) do
 
   create_table "libraries", force: true do |t|
     t.string   "name"
@@ -28,9 +28,37 @@ ActiveRecord::Schema.define(version: 20140621042550) do
     t.integer  "status"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "author"
+    t.string   "name"
+    t.integer  "count"
+    t.integer  "remain"
   end
 
   add_index "publications", ["library_id"], name: "index_publications_on_library_id"
+
+  create_table "rentals", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "publication_id"
+    t.datetime "expire_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.datetime "expired_at"
+  end
+
+  add_index "rentals", ["publication_id"], name: "index_rentals_on_publication_id"
+  add_index "rentals", ["user_id"], name: "index_rentals_on_user_id"
+
+  create_table "reservations", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "publication_id"
+    t.datetime "expire_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.datetime "expired_at"
+  end
+
+  add_index "reservations", ["publication_id"], name: "index_reservations_on_publication_id"
+  add_index "reservations", ["user_id"], name: "index_reservations_on_user_id"
 
   create_table "staffs", force: true do |t|
     t.string   "name"

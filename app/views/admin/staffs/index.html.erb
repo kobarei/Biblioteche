@@ -14,7 +14,7 @@
     <% @staffs.each do |staff| %>
       <tr>
         <td><%= staff.name %></td>
-        <td><%= staff.library %></td>
+        <td><%= staff.library.name %></td>
         <td><%= non_subdomained_login_id(request, staff.login_id) %></td>
         <td><%= link_to 'Show', [:admin, staff] %></td>
         <td><%= link_to 'Edit', edit_admin_staff_path(staff) %></td>

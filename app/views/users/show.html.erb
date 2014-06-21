@@ -1,24 +1,80 @@
-<p id="notice"><%= notice %></p>
+<div class="col-md-12">
+  <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @user.name %>
-</p>
+  <p>
+    <strong>Name:</strong>
+    <%= @user.name %>
+  </p>
 
-<p>
-  <strong>Library:</strong>
-  <%= @user.library %>
-</p>
+  <p>
+    <strong>Library:</strong>
+    <%= @user.library.name %>
+  </p>
 
-<p>
-  <strong>Login:</strong>
-  <%= @user.login_id %>
-</p>
+  <p>
+    <strong>Login:</strong>
+    <%= non_subdomained_login_id request, @user.login_id %>
+  </p>
 
-<p>
-  <strong>Age:</strong>
-  <%= @user.age %>
-</p>
+  <p>
+    <strong>Age:</strong>
+    <%= @user.age %>
+  </p>
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+  <%= link_to 'Edit', edit_user_path(@user) %>
+</div>
+
+<div class="col-md-6">
+  <h1>Rentals</h1>
+  <% @user.rentals.reverse_each do |rental| %>
+    <p>
+      <strong>Publication:</strong>
+      <%= link_to rental.publication.name, publication_path(rental.publication) %><br>
+      <label>Author: </label>
+      <%= rental.publication.author %>
+    </p>
+
+    <p>
+      <strong>Expire at:</strong>
+      <%= rental.expire_at %>
+    </p>
+
+    <p>
+      <strong>Expired at:</strong>
+      <%= rental.expired_at %>
+    </p>
+    <% if rental.expired_at.nil? %>
+      <%= link_to '返却', rental, method: :delete, data: { confirm: 'Are you sure?' } %>
+    <% end %>
+  <% end %>
+</div>
+
+<div class="col-md-6">
+  <h1>Reservations</h1>
+  <% @user.reservations.reverse_each do |reservation| %>
+    <p>
+      <strong>Publication:</strong>
+      <%= link_to reservation.publication.name, publication_path(reservation.publication) %><br>
+      <label>Author: </label>
+      <%= reservation.publication.author %>
+    </p>
+
+    <p>
+      <strong>Expire at:</strong>
+      <%= reservation.expire_at %>
+    </p>
+
+    <p>
+      <strong>Expired at:</strong>
+      <%= reservation.expired_at %>
+    </p>
+    <% if reservation.expired_at.nil? && rentalable?(@user, reservation.publication, reservation) %>
+      <%= link_to 'レンタル', rentals_path(rental: { publication_id: reservation.publication.id }), method: :post %>
+    <% end %>
+    <% if reservation.expired_at.nil? %>
+      <%= link_to '取り消し', reservation, method: :delete, data: { confirm: 'Are you sure?' } %>
+    <% end %>
+  <% end %>
+</div>
+
+

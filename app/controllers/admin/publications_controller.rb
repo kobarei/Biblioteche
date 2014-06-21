@@ -1,10 +1,12 @@
-class Admin::PublicationsController < ApplicationController
+class Admin::PublicationsController < AdminController
   before_action :set_publication, only: [:show, :edit, :update, :destroy]
+  before_action :set_library_to_params, only: :create
 
   # GET /publications
   # GET /publications.json
   def index
-    @publications = Publication.all
+    @books = Publication.books.library current_library
+    @magazines = Publication.magazines.library current_library
   end
 
   # GET /publications/1
@@ -29,10 +31,8 @@ class Admin::PublicationsController < ApplicationController
     respond_to do |format|
       if @publication.save
         format.html { redirect_to [:admin, @publication], notice: 'Publication was successfully created.' }
-        format.json { render :show, status: :created, location: @publication }
       else
         format.html { render :new }
-        format.json { render json: @publication.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -43,10 +43,8 @@ class Admin::PublicationsController < ApplicationController
     respond_to do |format|
       if @publication.update(publication_params)
         format.html { redirect_to [:admin, @publication], notice: 'Publication was successfully updated.' }
-        format.json { render :show, status: :ok, location: @publication }
       else
         format.html { render :edit }
-        format.json { render json: @publication.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -57,7 +55,6 @@ class Admin::PublicationsController < ApplicationController
     @publication.destroy
     respond_to do |format|
       format.html { redirect_to publications_url, notice: 'Publication was successfully destroyed.' }
-      format.json { head :no_content }
     end
   end
 
@@ -67,8 +64,12 @@ class Admin::PublicationsController < ApplicationController
       @publication = Publication.find(params[:id])
     end
 
+    def set_library_to_params
+      params[:publication][:library_id] = current_staff.library.id
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def publication_params
-      params.require(:publication).permit(:library_id, :isbn, :issn, :age_limit, :status)
+      params.require(:publication).permit(:name, :author, :library_id, :isbn, :issn, :age_limit, :count, :remain)
     end
 end

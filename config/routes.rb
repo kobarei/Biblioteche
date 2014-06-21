@@ -1,13 +1,17 @@
 Rails.application.routes.draw do
   root "publications#index"
 
+  resources :reservations, only: [:create, :destroy]
+
+  resources :rentals, only: [:create, :destroy]
+
   resources :libraries
 
   resources :publications, only: [:index, :show]
 
   resources :users, only: [:show, :new, :edit, :create, :update, :destroy]
 
-  resources :user_sessions, only: [:new, :create, :destroy]
+  resources :sessions, only: [:new, :create, :destroy]
 
   namespace :admin do
     root "statics#index"
@@ -18,7 +22,7 @@ Rails.application.routes.draw do
 
     resources :staffs
 
-    resources :staff_sessions, only: [:new, :create, :destroy]
+    resources :sessions, only: [:new, :create, :destroy]
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

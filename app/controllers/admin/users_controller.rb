@@ -1,6 +1,8 @@
-class Admin::UsersController < ApplicationController
+class Admin::UsersController < AdminController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-  before_action :subdomain, only: [:create, :update, :destroy]
+  before_action :set_subdomained_login_id, only: [:create, :update]
+  before_action :set_non_subdomained_login_id, only: [:show, :edit]
+  before_action :set_library_to_params, only: [:create]
 
   # GET /users
   # GET /users.json
@@ -29,11 +31,9 @@ class Admin::UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
-        format.json { render :show, status: :created, location: @user }
+        format.html { redirect_to [:admin, @user], notice: 'User was successfully created.' }
       else
-        format.html { render :new }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
+        format.html { render [:admin, :new] }
       end
     end
   end
@@ -43,11 +43,9 @@ class Admin::UsersController < ApplicationController
   def update
     respond_to do |format|
       if @user.update(user_params)
-        format.html { redirect_to @user, notice: 'User was successfully updated.' }
-        format.json { render :show, status: :ok, location: @user }
+        format.html { redirect_to [:admin, @user], notice: 'User was successfully updated.' }
       else
-        format.html { render :edit }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
+        format.html { render [:admin, :edit] }
       end
     end
   end
@@ -57,8 +55,7 @@ class Admin::UsersController < ApplicationController
   def destroy
     @user.destroy
     respond_to do |format|
-      format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
-      format.json { head :no_content }
+      format.html { redirect_to admin_users_url, notice: 'User was successfully destroyed.' }
     end
   end
 
@@ -68,12 +65,20 @@ class Admin::UsersController < ApplicationController
       @user = User.find(params[:id])
     end
 
-    def subdomain
+    def set_non_subdomained_login_id
+      @user.login_id = non_subdomained_login_id(request, @user.login_id)
+    end
+
+    def set_subdomained_login_id
       params[:user][:login_id] = subdomained_login_id(request, params[:user][:login_id])
+    end
+
+    def set_library_to_params
+      params[:user][:library_id] = current_staff.library.id
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:name, :library_id, :login_id, :age)
+      params.require(:user).permit(:name, :library_id, :login_id, :age, :password, :password_confimation)
     end
 end

@@ -1,7 +1,8 @@
 class Admin::StaffsController < AdminController
   before_action :set_staff, only: [:show, :edit, :update, :destroy]
   before_action :set_non_subdomained_login_id, only: [:show, :edit]
-  before_action :subdomain_login_id, only: [:create, :update, :destroy]
+  before_action :set_subdomained_login_id, only: [:create, :update, :destroy]
+  before_action :set_library_to_params, only: :create
 
   # GET /staffs
   # GET /staffs.json
@@ -30,12 +31,11 @@ class Admin::StaffsController < AdminController
 
     respond_to do |format|
       if @staff.save
-        format.html { redirect_to @staff, notice: 'Staff was successfully created.' }
-        format.json { render :show, status: :created, location: @staff }
+        session[:staff_id] = @staff.id unless current_staff
+        format.html { redirect_to [:admin, @staff], notice: 'Staff was successfully created.' }
       else
         set_non_subdomained_login_id
-        format.html { render :new }
-        format.json { render json: @staff.errors, status: :unprocessable_entity }
+        format.html { render [:admin, :new] }
       end
     end
   end
@@ -45,12 +45,10 @@ class Admin::StaffsController < AdminController
   def update
     respond_to do |format|
       if @staff.update(staff_params)
-        format.html { redirect_to @staff, notice: 'Staff was successfully updated.' }
-        format.json { render :show, status: :ok, location: @staff }
+        format.html { redirect_to [:admin, @staff], notice: 'Staff was successfully updated.' }
       else
         set_non_subdomained_login_id
-        format.html { render :edit }
-        format.json { render json: @staff.errors, status: :unprocessable_entity }
+        format.html { render [:admin, :edit] }
       end
     end
   end
@@ -61,7 +59,6 @@ class Admin::StaffsController < AdminController
     @staff.destroy
     respond_to do |format|
       format.html { redirect_to staffs_url, notice: 'Staff was successfully destroyed.' }
-      format.json { head :no_content }
     end
   end
 
@@ -75,8 +72,12 @@ class Admin::StaffsController < AdminController
       @staff.login_id = non_subdomained_login_id(request, @staff.login_id)
     end
 
-    def subdomain_login_id
+    def set_subdomained_login_id
       params[:staff][:login_id] = subdomained_login_id(request, params[:staff][:login_id])
+    end
+
+    def set_library_to_params
+      params[:staff][:library_id] = current_staff.try(:library).try(:id) || current_library.id
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

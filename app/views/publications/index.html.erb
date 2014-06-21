@@ -1,29 +1,62 @@
-<h1>Listing publications</h1>
+<div class="col-md-6">
+  <h1>Listing books</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Library</th>
-      <th>Isbn</th>
-      <th>Issn</th>
-      <th>Age limit</th>
-      <th>Status</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @publications.each do |publication| %>
+  <table>
+    <thead>
       <tr>
-        <td><%= publication.library %></td>
-        <td><%= publication.isbn %></td>
-        <td><%= publication.issn %></td>
-        <td><%= publication.age_limit %></td>
-        <td><%= publication.status %></td>
-        <td><%= link_to 'Show', publication %></td>
+        <th>Library</th>
+        <th>Name</th>
+        <th>Author</th>
+        <th>Isbn</th>
+        <th>Age limit</th>
+        <th>Status</th>
+        <th colspan="3"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
 
-<br>
+    <tbody>
+      <% @books.each do |book| %>
+        <tr>
+          <td><%= book.library.name  %></td>
+          <td><%= book.name %></td>
+          <td><%= book.author %></td>
+          <td><%= book.isbn %></td>
+          <td><%= book.age_limit %></td>
+          <td><%= book.status %></td>
+          <td><%= link_to 'Show', book %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+<div class="col-md-6">
+  <h1>Listing magazines</h1>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Library</th>
+        <th>Name</th>
+        <th>Author</th>
+        <th>Issn</th>
+        <th>Age limit</th>
+        <th>Status</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @magazines.each do |magazine| %>
+        <tr>
+          <td><%= magazine.library.name  %></td>
+          <td><%= maganine.name %></td>
+          <td><%= maganine.author %></td>
+          <td><%= magazine.issn %></td>
+          <td><%= magazine.age_limit %></td>
+          <td><%= magazine.status %></td>
+          <td><%= link_to 'Show', magazine %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

@@ -15,8 +15,8 @@
     <% @users.each do |user| %>
       <tr>
         <td><%= user.name %></td>
-        <td><%= user.library %></td>
-        <td><%= user.login_id %></td>
+        <td><%= user.library.name %></td>
+        <td><%= non_subdomained_login_id(request, user.login_id) %></td>
         <td><%= user.age %></td>
         <td><%= link_to 'Show', [:admin, user] %></td>
         <td><%= link_to 'Edit', edit_admin_user_path(user) %></td>

@@ -7,12 +7,12 @@
 
 <p>
   <strong>Library:</strong>
-  <%= @user.library %>
+  <%= @user.library.name %>
 </p>
 
 <p>
   <strong>Login:</strong>
-  <%= @user.login_id %>
+  <%= non_subdomained_login_id request, @user.login_id %>
 </p>
 
 <p>

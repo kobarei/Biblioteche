@@ -1,33 +1,70 @@
-<h1>Listing publications</h1>
+<div class="col-md-6">
+  <h1>Listing books</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Library</th>
-      <th>Isbn</th>
-      <th>Issn</th>
-      <th>Age limit</th>
-      <th>Status</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @publications.each do |publication| %>
+  <table>
+    <thead>
       <tr>
-        <td><%= publication.library %></td>
-        <td><%= publication.isbn %></td>
-        <td><%= publication.issn %></td>
-        <td><%= publication.age_limit %></td>
-        <td><%= publication.status %></td>
-        <td><%= link_to 'Show', [:admin, publication] %></td>
-        <td><%= link_to 'Edit', edit_admin_publication_path(publication) %></td>
-        <td><%= link_to 'Destroy', [:admin, publication], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th>Library</th>
+        <th>Name</th>
+        <th>Author</th>
+        <th>Isbn</th>
+        <th>Age limit</th>
+        <th>Status</th>
+        <th colspan="3"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
 
-<br>
+    <tbody>
+      <% @books.each do |book| %>
+        <tr>
+          <td><%= book.library.name  %></td>
+          <td><%= book.name %></td>
+          <td><%= book.author %></td>
+          <td><%= book.isbn %></td>
+          <td><%= book.age_limit %></td>
+          <td><%= book.status %></td>
+          <td><%= link_to 'Show', [:admin, book] %></td>
+          <td><%= link_to 'Edit', edit_admin_publication_path(book) %></td>
+          <td><%= link_to 'Destroy', [:admin, book], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+<div class="col-md-6">
+  <h1>Listing magazines</h1>
 
-<%= link_to 'New Publication', new_admin_publication_path %>
+  <table>
+    <thead>
+      <tr>
+        <th>Library</th>
+        <th>Name</th>
+        <th>Author</th>
+        <th>Issn</th>
+        <th>Age limit</th>
+        <th>Status</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @magazines.each do |magazine| %>
+        <tr>
+          <td><%= magazine.library.name  %></td>
+          <td><%= magazine.name %></td>
+          <td><%= magazine.author %></td>
+          <td><%= magazine.issn %></td>
+          <td><%= magazine.age_limit %></td>
+          <td><%= magazine.status %></td>
+          <td><%= link_to 'Show', [:admin, magazine] %></td>
+          <td><%= link_to 'Edit', edit_admin_publication_path(magazine) %></td>
+          <td><%= link_to 'Destroy', [:admin, magazine], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+<div class="col-md-12">
+  <%= link_to 'New Publication', new_admin_publication_path, class: "btn btn-primary btn-lg" %>
+</div>

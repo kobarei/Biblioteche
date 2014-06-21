@@ -12,8 +12,12 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :library_id %><br>
-    <%= f.text_field :library_id %>
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :author %><br>
+    <%= f.text_field :author %>
   </div>
   <div class="field">
     <%= f.label :isbn %><br>
@@ -27,11 +31,7 @@
     <%= f.label :age_limit %><br>
     <%= f.number_field :age_limit %>
   </div>
-  <div class="field">
-    <%= f.label :status %><br>
-    <%= f.number_field :status %>
-  </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit class: "btn btn-primary" %>
   </div>
 <% end %>
