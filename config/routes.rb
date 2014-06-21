@@ -1,11 +1,25 @@
 Rails.application.routes.draw do
-  resources :publications
-
-  resources :staffs
-
-  resources :users
+  root "publications#index"
 
   resources :libraries
+
+  resources :publications, only: [:index, :show]
+
+  resources :users, only: [:show, :new, :edit, :create, :update, :destroy]
+
+  resources :user_sessions, only: [:new, :create, :destroy]
+
+  namespace :admin do
+    root "statics#index"
+
+    resources :publications
+
+    resources :users
+
+    resources :staffs
+
+    resources :staff_sessions, only: [:new, :create, :destroy]
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

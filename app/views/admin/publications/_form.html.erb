@@ -1,4 +1,4 @@
-<%= form_for(@publication) do |f| %>
+<%= form_for([:admin, @publication]) do |f| %>
   <% if @publication.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@publication.errors.count, "error") %> prohibited this publication from being saved:</h2>

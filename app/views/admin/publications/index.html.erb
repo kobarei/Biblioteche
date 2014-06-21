@@ -20,10 +20,14 @@
         <td><%= publication.issn %></td>
         <td><%= publication.age_limit %></td>
         <td><%= publication.status %></td>
-        <td><%= link_to 'Show', publication %></td>
+        <td><%= link_to 'Show', [:admin, publication] %></td>
+        <td><%= link_to 'Edit', edit_admin_publication_path(publication) %></td>
+        <td><%= link_to 'Destroy', [:admin, publication], method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
+
+<%= link_to 'New Publication', new_admin_publication_path %>

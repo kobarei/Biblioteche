@@ -21,7 +21,7 @@ class StaffsControllerTest < ActionController::TestCase
       post :create, staff: { library_id: @staff.library_id, login_id: @staff.login_id, name: @staff.name }
     end
 
-    assert_redirected_to staff_path(assigns(:staff))
+    assert_redirected_to admin_staff_path(assigns(:staff))
   end
 
   test "should show staff" do
@@ -36,7 +36,7 @@ class StaffsControllerTest < ActionController::TestCase
 
   test "should update staff" do
     patch :update, id: @staff, staff: { library_id: @staff.library_id, login_id: @staff.login_id, name: @staff.name }
-    assert_redirected_to staff_path(assigns(:staff))
+    assert_redirected_to admin_staff_path(assigns(:staff))
   end
 
   test "should destroy staff" do
@@ -44,6 +44,6 @@ class StaffsControllerTest < ActionController::TestCase
       delete :destroy, id: @staff
     end
 
-    assert_redirected_to staffs_path
+    assert_redirected_to admin_staffs_path
   end
 end

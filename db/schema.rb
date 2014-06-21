@@ -11,12 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140620144111) do
+ActiveRecord::Schema.define(version: 20140621042550) do
 
   create_table "libraries", force: true do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "subdomain"
   end
 
   create_table "publications", force: true do |t|
@@ -37,6 +38,7 @@ ActiveRecord::Schema.define(version: 20140620144111) do
     t.string   "login_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "password_digest"
   end
 
   add_index "staffs", ["library_id"], name: "index_staffs_on_library_id"
@@ -48,6 +50,7 @@ ActiveRecord::Schema.define(version: 20140620144111) do
     t.integer  "age"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "password_digest"
   end
 
   add_index "users", ["library_id"], name: "index_users_on_library_id"

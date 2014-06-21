@@ -1,5 +1,7 @@
-class StaffsController < ApplicationController
+class Admin::StaffsController < AdminController
   before_action :set_staff, only: [:show, :edit, :update, :destroy]
+  before_action :set_non_subdomained_login_id, only: [:show, :edit]
+  before_action :subdomain_login_id, only: [:create, :update, :destroy]
 
   # GET /staffs
   # GET /staffs.json
@@ -31,6 +33,7 @@ class StaffsController < ApplicationController
         format.html { redirect_to @staff, notice: 'Staff was successfully created.' }
         format.json { render :show, status: :created, location: @staff }
       else
+        set_non_subdomained_login_id
         format.html { render :new }
         format.json { render json: @staff.errors, status: :unprocessable_entity }
       end
@@ -45,6 +48,7 @@ class StaffsController < ApplicationController
         format.html { redirect_to @staff, notice: 'Staff was successfully updated.' }
         format.json { render :show, status: :ok, location: @staff }
       else
+        set_non_subdomained_login_id
         format.html { render :edit }
         format.json { render json: @staff.errors, status: :unprocessable_entity }
       end
@@ -67,8 +71,16 @@ class StaffsController < ApplicationController
       @staff = Staff.find(params[:id])
     end
 
+    def set_non_subdomained_login_id
+      @staff.login_id = non_subdomained_login_id(request, @staff.login_id)
+    end
+
+    def subdomain_login_id
+      params[:staff][:login_id] = subdomained_login_id(request, params[:staff][:login_id])
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def staff_params
-      params.require(:staff).permit(:name, :library_id, :login_id)
+      params.require(:staff).permit(:name, :library_id, :login_id, :password, :passwrod_confirmation)
     end
 end
