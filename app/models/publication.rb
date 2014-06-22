@@ -44,12 +44,12 @@ class Publication < ActiveRecord::Base
   end
 
   def book?
-    return true if issn == ""
+    return true if issn.blank?
     false
   end
 
   def magazine?
-    return true if isbn == ""
+    return true if isbn.blank?
     false
   end
 

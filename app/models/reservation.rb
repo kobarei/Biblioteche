@@ -1,4 +1,6 @@
 class Reservation < ActiveRecord::Base
+  include Biblio::RentalReservation
+
   belongs_to :user
   belongs_to :publication
 
@@ -20,40 +22,6 @@ class Reservation < ActiveRecord::Base
   after_create do
     publication.remain -= 1
     publication.update_status
-  end
-
-  class << self
-    def user_publication(user, publication)
-      find_by user_id: user.id, publication_id: publication.id
-    end
-  end
-
-  def destroy
-    update expired_at: Time.now
-    publication.remain += 1
-    publication.update_status
-  end
-
-  private
-
-  def pass_age_limit?
-    return true if user.age >= publication.age_limit
-    false
-  end
-
-  def proper_library?
-    return true if publication.library == user.library
-    false
-  end
-
-  def no_publication_reservation?
-    return true if Reservation.alive.user_publication(user, publication).blank?
-    false
-  end
-
-  def no_publication_rental?
-    return true if Rental.alive.user_publication(user, publication).blank?
-    false
   end
 
 end
