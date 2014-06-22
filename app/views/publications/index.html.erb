@@ -4,7 +4,6 @@
   <table>
     <thead>
       <tr>
-        <th>Library</th>
         <th>Name</th>
         <th>Author</th>
         <th>Isbn</th>
@@ -17,7 +16,6 @@
     <tbody>
       <% @books.each do |book| %>
         <tr>
-          <td><%= book.library.name  %></td>
           <td><%= book.name %></td>
           <td><%= book.author %></td>
           <td><%= book.isbn %></td>
@@ -35,7 +33,6 @@
   <table>
     <thead>
       <tr>
-        <th>Library</th>
         <th>Name</th>
         <th>Author</th>
         <th>Issn</th>
@@ -48,7 +45,6 @@
     <tbody>
       <% @magazines.each do |magazine| %>
         <tr>
-          <td><%= magazine.library.name  %></td>
           <td><%= magazine.name %></td>
           <td><%= magazine.author %></td>
           <td><%= magazine.issn %></td>

@@ -2,14 +2,7 @@ class Admin::MagazinesController < AdminController
   before_action :set_magazine, only: [:show, :edit, :update, :destroy]
   before_action :set_library_to_params, only: :create
 
-  # GET /magazines
-  # GET /magazines.json
-  def index
-    @magazines = Magazine.all
-  end
-
   # GET /magazines/1
-  # GET /magazines/1.json
   def show
   end
 
@@ -23,42 +16,34 @@ class Admin::MagazinesController < AdminController
   end
 
   # POST /magazines
-  # POST /magazines.json
   def create
     @magazine = Magazine.new(magazine_params)
 
     respond_to do |format|
       if @magazine.save
         format.html { redirect_to [:admin, @magazine], notice: 'Publication was successfully created.' }
-        format.json { render :show, status: :created, location: @magazine }
       else
         format.html { render :new }
-        format.json { render json: @magazine.errors, status: :unprocessable_entity }
       end
     end
   end
 
   # PATCH/PUT /magazines/1
-  # PATCH/PUT /magazines/1.json
   def update
     respond_to do |format|
       if @magazine.update(magazine_params)
         format.html { redirect_to [:admin, @magazine], notice: 'Publication was successfully updated.' }
-        format.json { render :show, status: :ok, location: @magazine }
       else
         format.html { render :edit }
-        format.json { render json: @magazine.errors, status: :unprocessable_entity }
       end
     end
   end
 
   # DELETE /magazines/1
-  # DELETE /magazines/1.json
   def destroy
     @magazine.destroy
     respond_to do |format|
       format.html { redirect_to admin_publications_url, notice: 'Magazine was successfully destroyed.' }
-      format.json { head :no_content }
     end
   end
 

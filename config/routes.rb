@@ -9,9 +9,9 @@ Rails.application.routes.draw do
 
   resources :publications, only: [:index, :show]
 
-  resources :books, only: [:index, :show]
+  resources :books, only: :show
 
-  resources :magazines, only: [:index, :show]
+  resources :magazines, only: :show
 
   resources :users, only: [:show, :new, :edit, :create, :update, :destroy]
 
@@ -20,11 +20,11 @@ Rails.application.routes.draw do
   namespace :admin do
     root "sessions#new"
 
-    resources :publications
+    resources :publications, only: :index
 
-    resources :books, type: :Book
+    resources :books, type: :Book, only: [:show, :new, :edit, :create, :update, :destroy]
 
-    resources :magazines, type: :Magazine
+    resources :magazines, type: :Magazine, only: [:show, :new, :edit, :create, :update, :destroy]
 
     resources :users
 
