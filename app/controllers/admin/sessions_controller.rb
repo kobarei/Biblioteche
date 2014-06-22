@@ -1,5 +1,6 @@
 class Admin::SessionsController < AdminController
   before_action :subdomain_login_id, only: [:create]
+  before_action :go_to_staff
 
   def new
   end
@@ -23,4 +24,9 @@ class Admin::SessionsController < AdminController
   def subdomain_login_id
     params[:session][:login_id] = subdomained_login_id(request, params[:session][:login_id])
   end
+
+  def go_to_staff
+    redirect_to admin_staff_path current_staff if current_staff
+  end
+
 end

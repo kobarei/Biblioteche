@@ -1,5 +1,6 @@
 class SessionsController < ApplicationController
-  before_action :subdomain_login_id, only: [:create]
+  before_action :subdomain_login_id, only: :create
+  before_action :go_to_user
 
   def new
     @user = User.new
@@ -24,5 +25,9 @@ class SessionsController < ApplicationController
 
   def subdomain_login_id
     params[:session][:login_id] = subdomained_login_id(request, params[:session][:login_id])
+  end
+
+  def go_to_user
+    redirect_to user_path current_user if current_user
   end
 end

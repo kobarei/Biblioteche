@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   resources :sessions, only: [:new, :create, :destroy]
 
   namespace :admin do
-    root "statics#index"
+    root "sessions#new"
 
     resources :publications
 
