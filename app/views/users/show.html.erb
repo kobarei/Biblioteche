@@ -75,7 +75,7 @@
       <%= reservation.expired_at %>
     </p>
     <% if reservation.expired_at.nil? && lendingable?(@user, reservation.publication, reservation) %>
-      <%= link_to 'レンタル', lendings_path(lending: { publication_id: reservation.publication.id }), method: :post %>
+      <%= link_to 'レンタル', lendings_path(lending: { "#{reservation.publication.class.name.downcase}_id" => reservation.publication.id }), method: :post %>
     <% end %>
     <% if reservation.expired_at.nil? %>
       <%= link_to '取り消し', reservation, method: :delete, data: { confirm: 'Are you sure?' } %>
