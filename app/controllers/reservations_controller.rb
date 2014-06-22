@@ -3,7 +3,6 @@ class ReservationsController < ApplicationController
   before_action :set_meta, only: :create
 
   # POST /reservations
-  # POST /reservations.json
   def create
     @reservation = Reservation.new(reservation_params)
 
@@ -17,7 +16,6 @@ class ReservationsController < ApplicationController
   end
 
   # DELETE /reservations/1
-  # DELETE /reservations/1.json
   def destroy
     @reservation.destroy
     respond_to do |format|

@@ -3,7 +3,6 @@ class RentalsController < ApplicationController
   before_action :set_meta, only: [:create, :update]
 
   # POST /rentals
-  # POST /rentals.json
   def create
     @rental = Rental.new(rental_params)
 
@@ -17,7 +16,6 @@ class RentalsController < ApplicationController
   end
 
   # PATCH/PUT /rentals/1
-  # PATCH/PUT /rentals/1.json
   def update
     respond_to do |format|
       if @rental.update(rental_params)
@@ -29,7 +27,6 @@ class RentalsController < ApplicationController
   end
 
   # DELETE /rentals/1
-  # DELETE /rentals/1.json
   def destroy
     @rental.destroy
     respond_to do |format|

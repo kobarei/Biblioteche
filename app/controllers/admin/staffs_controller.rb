@@ -5,13 +5,11 @@ class Admin::StaffsController < AdminController
   before_action :set_library_to_params, only: :create
 
   # GET /staffs
-  # GET /staffs.json
   def index
     @staffs = Staff.all
   end
 
   # GET /staffs/1
-  # GET /staffs/1.json
   def show
   end
 
@@ -25,7 +23,6 @@ class Admin::StaffsController < AdminController
   end
 
   # POST /staffs
-  # POST /staffs.json
   def create
     @staff = Staff.new(staff_params)
 
@@ -41,7 +38,6 @@ class Admin::StaffsController < AdminController
   end
 
   # PATCH/PUT /staffs/1
-  # PATCH/PUT /staffs/1.json
   def update
     respond_to do |format|
       if @staff.update(staff_params)
@@ -54,7 +50,6 @@ class Admin::StaffsController < AdminController
   end
 
   # DELETE /staffs/1
-  # DELETE /staffs/1.json
   def destroy
     @staff.destroy
     respond_to do |format|

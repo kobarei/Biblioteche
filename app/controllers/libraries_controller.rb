@@ -2,13 +2,11 @@ class LibrariesController < ApplicationController
   before_action :set_library, only: [:show, :edit, :update, :destroy]
 
   # GET /libraries
-  # GET /libraries.json
   def index
     @libraries = Library.all
   end
 
   # GET /libraries/1
-  # GET /libraries/1.json
   def show
   end
 
@@ -22,7 +20,6 @@ class LibrariesController < ApplicationController
   end
 
   # POST /libraries
-  # POST /libraries.json
   def create
     @library = Library.new(library_params)
 
@@ -36,7 +33,6 @@ class LibrariesController < ApplicationController
   end
 
   # PATCH/PUT /libraries/1
-  # PATCH/PUT /libraries/1.json
   def update
     respond_to do |format|
       if @library.update(library_params)
@@ -48,7 +44,6 @@ class LibrariesController < ApplicationController
   end
 
   # DELETE /libraries/1
-  # DELETE /libraries/1.json
   def destroy
     @library.destroy
     respond_to do |format|

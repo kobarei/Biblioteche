@@ -3,14 +3,12 @@ class Admin::PublicationsController < AdminController
   before_action :set_library_to_params, only: :create
 
   # GET /publications
-  # GET /publications.json
   def index
     @books = Publication.books.library current_library
     @magazines = Publication.magazines.library current_library
   end
 
   # GET /publications/1
-  # GET /publications/1.json
   def show
   end
 
@@ -24,7 +22,6 @@ class Admin::PublicationsController < AdminController
   end
 
   # POST /publications
-  # POST /publications.json
   def create
     @publication = Publication.new(publication_params)
 
@@ -38,7 +35,6 @@ class Admin::PublicationsController < AdminController
   end
 
   # PATCH/PUT /publications/1
-  # PATCH/PUT /publications/1.json
   def update
     respond_to do |format|
       if @publication.update(publication_params)
@@ -50,7 +46,6 @@ class Admin::PublicationsController < AdminController
   end
 
   # DELETE /publications/1
-  # DELETE /publications/1.json
   def destroy
     @publication.destroy
     respond_to do |format|
