@@ -1,5 +1,5 @@
 module Biblio
-  module RentalReservation
+  module LendingReservation
 
     def self.included(base)
       base.extend(ClassMethods)
@@ -30,7 +30,7 @@ module Biblio
     end
 
     def need_reservation?
-      return true if user.rentalable_position? publication, Reservation.alive.user_publication(user, publication)
+      return true if user.lendingable_position? publication, Reservation.alive.user_publication(user, publication)
       false
     end
 
@@ -39,8 +39,8 @@ module Biblio
       false
     end
 
-    def no_publication_rental?
-      return true if Rental.alive.user_publication(user, publication).blank?
+    def no_publication_lending?
+      return true if Lending.alive.user_publication(user, publication).blank?
       false
     end
 

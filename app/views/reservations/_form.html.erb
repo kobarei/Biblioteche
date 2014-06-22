@@ -49,7 +49,7 @@
 
 <% if current_user %>
   <% if @reservation.publication.available? %>
-    <%= link_to 'Rental', rentals_path(rental: { publication_id: @reservation.publication.id }), method: :post %>
+    <%= link_to 'Lending', lendings_path(lending: { publication_id: @reservation.publication.id }), method: :post %>
   <% end %>
   <%= link_to 'Reservation', reservations_path(reservation: { publication_id: @reservation.publication.id }), method: :post %>
 <% end %>

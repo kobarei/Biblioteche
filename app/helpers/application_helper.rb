@@ -1,7 +1,7 @@
 module ApplicationHelper
   include Biblio::Subdomain
 
-  def rentalable?(user, publication, reservation)
-    user.rentalable_position? publication, reservation
+  def lendingable?(user, publication, reservation)
+    user.lendingable_position? publication, reservation
   end
 end

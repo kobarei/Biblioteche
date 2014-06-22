@@ -1,5 +1,5 @@
 class Reservation < ActiveRecord::Base
-  include Biblio::RentalReservation
+  include Biblio::LendingReservation
 
   belongs_to :user
   belongs_to :publication
@@ -8,7 +8,7 @@ class Reservation < ActiveRecord::Base
     errors.add(:base, "年齢制限がかかっています") unless pass_age_limit?
     errors.add(:base, "不正な蔵書です")         unless proper_library?
     errors.add(:base, "すでに予約しています")    unless no_publication_reservation?
-    errors.add(:base, "すでにレンタルしています") unless no_publication_rental?
+    errors.add(:base, "すでにレンタルしています") unless no_publication_lending?
   end
 
   scope :alive, -> { where expired_at: nil }

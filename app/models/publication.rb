@@ -1,6 +1,6 @@
 class Publication < ActiveRecord::Base
   belongs_to :library
-  has_many :rentals
+  has_many :lendings
   has_many :reservations
 
   enum status: %i(available away)
@@ -26,8 +26,8 @@ class Publication < ActiveRecord::Base
     available!
   end
 
-  def rentals
-    Rental.alive.remain id
+  def lendings
+    Lending.alive.remain id
   end
 
   def reservations

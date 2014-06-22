@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @lending.user %>
+</p>
+
+<p>
+  <strong>Publication:</strong>
+  <%= @lending.publication %>
+</p>
+
+<p>
+  <strong>Expire at:</strong>
+  <%= @lending.expire_at %>
+</p>
+
+<p>
+  <strong>Expired at:</strong>
+  <%= @lending.expired_at %>
+</p>
+
+<%= link_to 'Edit', edit_lending_path(@lending) %> |
+<%= link_to 'Back', lendings_path %>
