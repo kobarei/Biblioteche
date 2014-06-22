@@ -2,7 +2,8 @@ class Lending < ActiveRecord::Base
   include Biblio::LendingReservation
 
   belongs_to :user
-  belongs_to :publication
+  belongs_to :book
+  belongs_to :magazine
 
   validate on: :create do
     errors.add(:base, "年齢制限がかかっています")       unless pass_age_limit?
@@ -13,13 +14,13 @@ class Lending < ActiveRecord::Base
 
   scope :alive, -> { where expired_at: nil }
   scope :expired, -> { where.not expired_at: nil }
-  scope :remain, -> publication_id { where publication_id: publication_id }
 
   before_create do
     self.expire_at = 7.days.since.end_of_day
   end
 
   after_create do
+    publication = book || magazine
     publication.remain -= 1
     publication.update_status
     reservation = Reservation.alive.user_publication(user, publication)

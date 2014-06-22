@@ -3,8 +3,8 @@ class PublicationsController < ApplicationController
 
   # GET /publications
   def index
-    @books = Publication.books.library current_library
-    @magazines = Publication.magazines.library current_library
+    @books = Book.library current_library
+    @magazines = Magazine.library current_library
   end
 
   # GET /publications/1

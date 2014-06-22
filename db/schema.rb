@@ -11,18 +11,35 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140622131849) do
+ActiveRecord::Schema.define(version: 20140622160911) do
+
+  create_table "books", force: true do |t|
+    t.integer  "library_id"
+    t.integer  "age_limit"
+    t.integer  "status"
+    t.string   "author"
+    t.string   "name"
+    t.integer  "count"
+    t.integer  "remain"
+    t.string   "isbn"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "books", ["library_id"], name: "index_books_on_library_id"
 
   create_table "lendings", force: true do |t|
     t.integer  "user_id"
-    t.integer  "publication_id"
     t.datetime "expire_at"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.datetime "expired_at"
+    t.integer  "book_id"
+    t.integer  "magazine_id"
   end
 
-  add_index "lendings", ["publication_id"], name: "index_lendings_on_publication_id"
+  add_index "lendings", ["book_id"], name: "index_lendings_on_book_id"
+  add_index "lendings", ["magazine_id"], name: "index_lendings_on_magazine_id"
   add_index "lendings", ["user_id"], name: "index_lendings_on_user_id"
 
   create_table "libraries", force: true do |t|
@@ -32,10 +49,24 @@ ActiveRecord::Schema.define(version: 20140622131849) do
     t.string   "subdomain"
   end
 
+  create_table "magazines", force: true do |t|
+    t.integer  "library_id"
+    t.integer  "age_limit"
+    t.integer  "status"
+    t.string   "author"
+    t.string   "name"
+    t.integer  "count"
+    t.integer  "remain"
+    t.string   "issn"
+    t.integer  "interval"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "magazines", ["library_id"], name: "index_magazines_on_library_id"
+
   create_table "publications", force: true do |t|
     t.integer  "library_id"
-    t.string   "isbn"
-    t.string   "issn"
     t.integer  "age_limit"
     t.integer  "status"
     t.datetime "created_at"
@@ -51,14 +82,16 @@ ActiveRecord::Schema.define(version: 20140622131849) do
 
   create_table "reservations", force: true do |t|
     t.integer  "user_id"
-    t.integer  "publication_id"
     t.datetime "expire_at"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.datetime "expired_at"
+    t.integer  "book_id"
+    t.integer  "magazine_id"
   end
 
-  add_index "reservations", ["publication_id"], name: "index_reservations_on_publication_id"
+  add_index "reservations", ["book_id"], name: "index_reservations_on_book_id"
+  add_index "reservations", ["magazine_id"], name: "index_reservations_on_magazine_id"
   add_index "reservations", ["user_id"], name: "index_reservations_on_user_id"
 
   create_table "staffs", force: true do |t|

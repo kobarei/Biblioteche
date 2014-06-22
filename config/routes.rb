@@ -9,9 +9,9 @@ Rails.application.routes.draw do
 
   resources :publications, only: [:index, :show]
 
-  resources :books, controller: :publications, type: :Book, only: [:index, :show]
+  resources :books, only: [:index, :show]
 
-  resources :magazines, controller: :publications, type: :Magazine, only: [:index, :show]
+  resources :magazines, only: [:index, :show]
 
   resources :users, only: [:show, :new, :edit, :create, :update, :destroy]
 
@@ -22,9 +22,9 @@ Rails.application.routes.draw do
 
     resources :publications
 
-    resources :books, controller: :publications, type: :Book
+    resources :books, type: :Book
 
-    resources :magazines, controller: :publications, type: :Magazine
+    resources :magazines, type: :Magazine
 
     resources :users
 

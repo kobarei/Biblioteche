@@ -29,8 +29,11 @@
   <% @user.lendings.reverse_each do |lending| %>
     <p>
       <strong>Publication:</strong>
-      <%= link_to lending.publication.name, publication_path(lending.publication) %><br>
-      <label>Author: </label>
+      <%= lending.publication.name %>
+    </p>
+
+    <p>
+      <strong>Author:</strong>
       <%= lending.publication.author %>
     </p>
 
@@ -54,8 +57,11 @@
   <% @user.reservations.reverse_each do |reservation| %>
     <p>
       <strong>Publication:</strong>
-      <%= link_to reservation.publication.name, publication_path(reservation.publication) %><br>
-      <label>Author: </label>
+      <%= reservation.publication.name %>
+    </p>
+
+    <p>
+      <strong>Author:</strong>
       <%= reservation.publication.author %>
     </p>
 

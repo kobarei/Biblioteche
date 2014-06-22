@@ -1,0 +1,51 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Age limit:</strong>
+  <%= @magazine.age_limit %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @magazine.status %>
+</p>
+
+<p>
+  <strong>Author:</strong>
+  <%= @magazine.author %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @magazine.name %>
+</p>
+
+<p>
+  <strong>Count:</strong>
+  <%= @magazine.count %>
+</p>
+
+<p>
+  <strong>Remain:</strong>
+  <%= @magazine.remain %>
+</p>
+
+<p>
+  <strong>Issn:</strong>
+  <%= @magazine.issn %>
+</p>
+
+<p>
+  <strong>Interval:</strong>
+  <%= @magazine.interval %>
+</p>
+
+<%= link_to 'Back', publications_path %>
+<% if current_user %>
+  <% if @magazine.available? %>
+    <%= link_to 'Lending', lendings_path(lending: { magazine_id: @magazine.id }), method: :post %>
+  <% end %>
+  <%= link_to 'Reservation', reservations_path(reservation: { magazine_id: @magazine.id }), method: :post %>
+<% else %>
+  Lendingするには<%= link_to 'ログイン', new_session_path %>してください
+<% end %>

@@ -67,7 +67,7 @@ class UsersController < ApplicationController
     end
 
     def set_library_to_params
-      params[:user][:library_id] ||= current_user.try(:library).try(:id) || current_library.id
+      params[:user][:library_id] ||= current_user.try(:library_id) || current_library.id
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

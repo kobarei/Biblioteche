@@ -4,8 +4,8 @@ class Admin::PublicationsController < AdminController
 
   # GET /publications
   def index
-    @books = Publication.books.library current_library
-    @magazines = Publication.magazines.library current_library
+    @books = Book.library current_library
+    @magazines = Magazine.library current_library
   end
 
   # GET /publications/1
@@ -49,7 +49,7 @@ class Admin::PublicationsController < AdminController
   def destroy
     @publication.destroy
     respond_to do |format|
-      format.html { redirect_to publications_url, notice: 'Publication was successfully destroyed.' }
+      format.html { redirect_to admin_publications_url, notice: 'Publication was successfully destroyed.' }
     end
   end
 
@@ -60,11 +60,13 @@ class Admin::PublicationsController < AdminController
     end
 
     def set_library_to_params
-      params[:publication][:library_id] = current_staff.library.id
+      params[:publication][:library_id] = current_staff.try(:library_id)
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def publication_params
-      params.require(:publication).permit(:name, :author, :library_id, :isbn, :issn, :age_limit, :count, :remain)
+      params.require(:publication).permit(
+        :name, :author, :library_id, :isbn, :issn, :interval, :age_limit, :count, :remain, :category
+      )
     end
 end

@@ -31,12 +31,12 @@
 
 <p>
   <strong>Isbn:</strong>
-  <%= @lending.publication.isbn %>
+  <%= @lending.publication.try(:isbn) %>
 </p>
 
 <p>
   <strong>Issn:</strong>
-  <%= @lending.publication.issn %>
+  <%= @lending.publication.try(:issn) %>
 </p>
 
 <p>
@@ -51,7 +51,7 @@
 
 <% if current_user %>
   <% if @lending.publication.available? %>
-    <%= link_to 'Lending', lendings_path(lending: { publication_id: @lending.publication.id }), method: :post %>
+    <%= link_to 'Lending', lendings_path(lending: { "#{@lending.publication.class.name.downcase}_id" => @lending.publication.id }), method: :post %>
   <% end %>
-  <%= link_to 'Reservation', reservations_path(reservation: { publication_id: @lending.publication.id }), method: :post %>
+  <%= link_to 'Reservation', reservations_path(reservation: { "#{@lending.publication.class.name.downcase}_id" => @lending.publication.id }), method: :post %>
 <% end %>
