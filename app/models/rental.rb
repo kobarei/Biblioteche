@@ -49,7 +49,7 @@ class Rental < ActiveRecord::Base
   end
 
   def need_reservation?
-    return true if user.rentalable? publication, Reservation.alive.user_publication(user, publication)
+    return true if user.rentalable_position? publication, Reservation.alive.user_publication(user, publication)
     false
   end
 
