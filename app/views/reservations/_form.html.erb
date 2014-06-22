@@ -10,24 +10,46 @@
       </ul>
     </div>
   <% end %>
+<% end %>
 
-  <div class="field">
-    <%= f.label :user_id %><br>
-    <%= f.text_field :user_id %>
-  </div>
-  <div class="field">
-    <%= f.label :publication_id %><br>
-    <%= f.text_field :publication_id %>
-  </div>
-  <div class="field">
-    <%= f.label :expire_at %><br>
-    <%= f.datetime_field :expire_at %>
-  </div>
-  <div class="field">
-    <%= f.label :expired_at %><br>
-    <%= f.datetime_field :expired_at %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+<p>
+  <strong>Library:</strong>
+  <%= @reservation.publication.library.name %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @reservation.publication.name %>
+</p>
+
+<p>
+  <strong>Author:</strong>
+  <%= @reservation.publication.author %>
+</p>
+
+<p>
+  <strong>Isbn:</strong>
+  <%= @reservation.publication.isbn %>
+</p>
+
+<p>
+  <strong>Issn:</strong>
+  <%= @reservation.publication.issn %>
+</p>
+
+<p>
+  <strong>Age limit:</strong>
+  <%= @reservation.publication.age_limit %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @reservation.publication.status %>
+</p>
+
+<% if current_user %>
+  <% if @reservation.publication.available? %>
+    <%= link_to 'Rental', rentals_path(rental: { publication_id: @reservation.publication.id }), method: :post %>
+  <% end %>
+  <%= link_to 'Reservation', reservations_path(reservation: { publication_id: @reservation.publication.id }), method: :post %>
 <% end %>

@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
   before_action :subdomain_login_id, only: :create
-  before_action :go_to_user
+  before_action :go_to_user, only: [:new, :create]
 
   def new
     @user = User.new

@@ -10,7 +10,7 @@ class ReservationsController < ApplicationController
       if @reservation.save
         format.html { redirect_to user_path current_user, notice: 'Reservation was successfully created.' }
       else
-        format.html { render publication_path @reservation.publication }
+        format.html { render :new }
       end
     end
   end

@@ -1,6 +1,6 @@
 class Admin::SessionsController < AdminController
   before_action :subdomain_login_id, only: [:create]
-  before_action :go_to_staff
+  before_action :go_to_staff, only: [:new, :create]
 
   def new
   end

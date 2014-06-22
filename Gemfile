@@ -38,7 +38,6 @@ gem 'unicorn'
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
-gem "ruby-duration"
 gem 'execjs'
 gem 'jquery-turbolinks'
 gem "kaminari"
