@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140621190642) do
+ActiveRecord::Schema.define(version: 20140622131849) do
 
   create_table "lendings", force: true do |t|
     t.integer  "user_id"
@@ -44,6 +44,7 @@ ActiveRecord::Schema.define(version: 20140621190642) do
     t.string   "name"
     t.integer  "count"
     t.integer  "remain"
+    t.string   "category"
   end
 
   add_index "publications", ["library_id"], name: "index_publications_on_library_id"

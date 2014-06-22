@@ -3,6 +3,8 @@ class Publication < ActiveRecord::Base
   has_many :lendings
   has_many :reservations
 
+  self.inheritance_column = 'category'
+
   enum status: %i(available away)
 
   validates :library_id, presence: true
@@ -20,6 +22,11 @@ class Publication < ActiveRecord::Base
     self.count     ||= 0
     self.remain    ||= self.count
     self.age_limit ||= 0
+    if self.issn.blank?
+      self.category = 'Book'
+    elsif self.isbn.blank?
+      self.category = 'Magazine'
+    end
   end
 
   after_create do

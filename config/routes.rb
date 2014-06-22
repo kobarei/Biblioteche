@@ -9,6 +9,10 @@ Rails.application.routes.draw do
 
   resources :publications, only: [:index, :show]
 
+  resources :books, controller: :publications, type: :Book, only: [:index, :show]
+
+  resources :magazines, controller: :publications, type: :Magazine, only: [:index, :show]
+
   resources :users, only: [:show, :new, :edit, :create, :update, :destroy]
 
   resources :sessions, only: [:new, :create, :destroy]
@@ -17,6 +21,10 @@ Rails.application.routes.draw do
     root "sessions#new"
 
     resources :publications
+
+    resources :books, controller: :publications, type: :Book
+
+    resources :magazines, controller: :publications, type: :Magazine
 
     resources :users
 
