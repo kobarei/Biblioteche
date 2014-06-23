@@ -50,4 +50,5 @@ group  :development, :test do
   gem 'binding_of_caller'
   gem 'rspec-rails'
   gem 'factory_girl_rails'
+  gem 'railroady'
 end
