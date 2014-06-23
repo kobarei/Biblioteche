@@ -1,0 +1,32 @@
+#!/bin/zsh
+
+APP="biblio.kobarei.me"
+APP_DIR=$HOME/apps/kobarei.me
+PID=$APP_DIR/tmp/pids/unicorn.pid
+PORT=5000
+
+start() {
+    cd $APP_DIR
+    echo "start $APP"
+    git pull origin master
+    bundle install
+    bundle exec rake db:migrate RAILS_ENV=production
+    bundle exec rake assets:precompile RAILS_ENV=production
+    bundle exec unicorn_rails -c config/unicorn.rb -E production -D -p $PORT
+}
+
+stop() {
+    echo "stop $APP"
+    kill `cat ${PID}`
+    rm -rf $PID
+}
+
+restart() {
+    echo "restart $APP"
+    if [ -e $PID ]; then
+        stop
+    fi
+    start
+}
+
+eval $argv[1]
