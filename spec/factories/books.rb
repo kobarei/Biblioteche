@@ -8,7 +8,7 @@ FactoryGirl.define do
     library_id 1
     age_limit 0
     isbn "aa"
-    count 2
+    count 1
   end
 
   factory :adult_book_1, class: Book do
@@ -20,4 +20,15 @@ FactoryGirl.define do
     isbn "bb"
     count 1
   end
+
+  factory :child_book_2, class: Book do
+    id 3
+    name "Wagahai ha Neko"
+    author "Natsume Souseki"
+    library_id 2
+    age_limit 0
+    isbn "cc"
+    count 2
+  end
+
 end

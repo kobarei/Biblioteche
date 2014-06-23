@@ -20,7 +20,6 @@ class Reservation < ActiveRecord::Base
   end
 
   after_create do
-    publication = book || magazine
     publication.remain -= 1
     publication.update_status
   end

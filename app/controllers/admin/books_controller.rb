@@ -54,7 +54,7 @@ class Admin::BooksController < AdminController
     end
 
     def set_library_to_params
-      params[:book][:library_id] = current_staff.try(:library_id)
+      params[:book][:library_id] = current_staff.library_id
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

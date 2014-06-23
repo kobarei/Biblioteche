@@ -24,31 +24,26 @@ module Biblio
     private
 
     def pass_age_limit?
-      publication = book || magazine
       return true if user.age >= publication.age_limit
       false
     end
 
     def proper_library?
-      publication = book || magazine
       return true if publication.library_id == user.library_id
       false
     end
 
-    def need_reservation?
-      publication = book || magazine
+    def no_need_reservation?
       return true if user.lendingable_position? publication, Reservation.alive.user_publication(user, publication)
       false
     end
 
     def no_publication_reservation?
-      publication = book || magazine
       return true if Reservation.alive.user_publication(user, publication).blank?
       false
     end
 
     def no_publication_lending?
-      publication = book || magazine
       return true if Lending.alive.user_publication(user, publication).blank?
       false
     end

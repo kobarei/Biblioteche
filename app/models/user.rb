@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
 
   def lendingable_position?(publication, reservation)
     return true if
-      publication.remain > 0 ||
+      publication.available? ||
       publication.reservations.take(publication.count - publication.lendings.count).find { |res| res == reservation }
     false
   end
