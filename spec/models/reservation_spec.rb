@@ -5,7 +5,7 @@ describe Lending do
     FactoryGirl.create :child_user_1
     FactoryGirl.create :adult_user_1
     FactoryGirl.create :child_book_1
-    FactoryGirl.create :child_book_2
+    FactoryGirl.create :child_book_1_1
     FactoryGirl.create :adult_book_1
   end
 

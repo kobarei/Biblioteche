@@ -17,6 +17,7 @@ module Biblio
 
         scope :alive, -> { where expired_at: nil }
         scope :expired, -> { where.not expired_at: nil }
+        scope :user, -> user_id { where user_id: user_id }
 
         before_create do
           self.expire_at = 7.days.since.end_of_day
@@ -32,7 +33,7 @@ module Biblio
 
     module ClassMethods
       def user_publication(user, publication)
-        find_by user_id: user.id, "#{publication.class.name.downcase}_id" => publication.id
+        find_by :user_id => user.id, "#{publication.class.name.downcase}_id" => publication.id
       end
     end
 
@@ -58,18 +59,13 @@ module Biblio
       false
     end
 
-    def no_need_reservation?
-      return true if user.lendingable_position? publication, Reservation.alive.user_publication(user, publication)
-      false
-    end
-
-    def no_publication_reservation?
-      return true if Reservation.alive.user_publication(user, publication).blank?
-      false
-    end
-
     def no_publication_lending?
       return true if Lending.alive.user_publication(user, publication).blank?
+      false
+    end
+
+    def no_max_reached?
+      return true if self.class.alive.user(user_id).count < 10
       false
     end
 
