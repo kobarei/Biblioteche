@@ -3,8 +3,14 @@ class PublicationsController < ApplicationController
 
   # GET /publications
   def index
-    @books = Book.library current_library
-    @magazines = Magazine.library current_library
+    if params[:q].present?
+      pubs = Publication.search(params[:q])
+      @books       = pubs[:books]
+      @magazines   = pubs[:magazines]
+    else
+      @books = Book.library current_library
+      @magazines = Magazine.library current_library
+    end
   end
 
   # GET /publications/1

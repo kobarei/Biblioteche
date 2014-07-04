@@ -14,13 +14,13 @@ describe Lending do
     context "年齢制限パスする" do
       let(:reservation) { FactoryGirl.build :child_child_reservation_1 }
       it { expect(reservation).to be_valid }
-      it { expect(reservation.send(:pass_age_limit?)).to equal(true) }
+      it { expect(reservation.send(:pass_age_limit?)).to eq(true) }
     end
 
     context "年齢制限パスしない" do
       let(:reservation) { FactoryGirl.build :child_adult_reservation_1 }
       it { expect(reservation).not_to be_valid }
-      it { expect(reservation.send(:pass_age_limit?)).to equal(false) }
+      it { expect(reservation.send(:pass_age_limit?)).to eq(false) }
     end
 
   end
@@ -30,13 +30,13 @@ describe Lending do
     context "ユーザーと本の図書館が一致する" do
       let(:reservation) { FactoryGirl.build :child_child_reservation_1 }
       it { expect(reservation).to be_valid }
-      it { expect(reservation.send(:proper_library?)).to equal(true) }
+      it { expect(reservation.send(:proper_library?)).to eq(true) }
     end
 
     context "ユーザーと本の図書館が一致しない" do
       let(:reservation) { FactoryGirl.build :child_child_reservation_3 }
       it { expect(reservation).not_to be_valid }
-      it { expect(reservation.send(:proper_library?)).to equal(false) }
+      it { expect(reservation.send(:proper_library?)).to eq(false) }
     end
 
   end
@@ -46,7 +46,7 @@ describe Lending do
     context "まだ予約していない" do
       let(:reservation) { FactoryGirl.build :child_child_reservation_1 }
       it { expect(reservation).to be_valid }
-      it { expect(reservation.send(:no_publication_reservation?)).to equal(true) }
+      it { expect(reservation.send(:no_publication_reservation?)).to eq(true) }
     end
 
     context "予約している" do
@@ -55,7 +55,7 @@ describe Lending do
       end
       let(:reservation) { FactoryGirl.build :child_child_reservation_1 }
       it { expect(reservation).not_to be_valid }
-      it { expect(reservation.send(:no_publication_reservation?)).to equal(false) }
+      it { expect(reservation.send(:no_publication_reservation?)).to eq(false) }
     end
 
   end
@@ -65,7 +65,7 @@ describe Lending do
     context "まだその蔵書をレンタルしていない" do
       let(:reservation) { FactoryGirl.build :child_child_reservation_2 }
       it { expect(reservation).to be_valid }
-      it { expect(reservation.send(:no_publication_lending?)).to equal(true) }
+      it { expect(reservation.send(:no_publication_lending?)).to eq(true) }
     end
 
     context "すでにその蔵書をレンタルしている" do
@@ -74,7 +74,7 @@ describe Lending do
       end
       let(:reservation) { FactoryGirl.build :child_child_reservation_2 }
       it { expect(reservation).not_to be_valid }
-      it { expect(reservation.send(:no_publication_lending?)).to equal(false) }
+      it { expect(reservation.send(:no_publication_lending?)).to eq(false) }
     end
 
   end

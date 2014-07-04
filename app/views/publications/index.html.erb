@@ -26,6 +26,7 @@
       <% end %>
     </tbody>
   </table>
+  <%= 'ないです' if @books.blank? %>
 </div>
 <div class="col-md-6">
   <h1>Listing magazines</h1>
@@ -55,4 +56,5 @@
       <% end %>
     </tbody>
   </table>
+  <%= 'ないです' if @magazines.blank? %>
 </div>
