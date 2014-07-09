@@ -8,7 +8,7 @@ FactoryGirl.define do
     author "MyString"
     name "MyString"
     count 1
-    remain 1
+    stock 1
     issn "MyString"
     interval 1
   end

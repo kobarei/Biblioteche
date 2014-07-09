@@ -9,7 +9,7 @@ RSpec.describe "magazines/show", :type => :view do
       :author => "Author",
       :name => "Name",
       :count => 3,
-      :remain => 4,
+      :stock => 4,
       :issn => "Issn",
       :interval => 5
     ))

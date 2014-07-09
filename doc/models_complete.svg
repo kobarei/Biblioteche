@@ -29,7 +29,7 @@
 <text text-anchor="start" x="8" y="-98.3" font-family="Times,serif" font-size="14.00">author :string</text>
 <text text-anchor="start" x="8" y="-84.3" font-family="Times,serif" font-size="14.00">name :string</text>
 <text text-anchor="start" x="8" y="-70.3" font-family="Times,serif" font-size="14.00">count :integer</text>
-<text text-anchor="start" x="8" y="-56.3" font-family="Times,serif" font-size="14.00">remain :integer</text>
+<text text-anchor="start" x="8" y="-56.3" font-family="Times,serif" font-size="14.00">stock :integer</text>
 <text text-anchor="start" x="8" y="-42.3" font-family="Times,serif" font-size="14.00">isbn :string</text>
 <text text-anchor="start" x="8" y="-28.3" font-family="Times,serif" font-size="14.00">created_at :datetime</text>
 <text text-anchor="start" x="8" y="-14.3" font-family="Times,serif" font-size="14.00">updated_at :datetime</text>
@@ -73,7 +73,7 @@
 <text text-anchor="start" x="159" y="-298.3" font-family="Times,serif" font-size="14.00">author :string</text>
 <text text-anchor="start" x="159" y="-284.3" font-family="Times,serif" font-size="14.00">name :string</text>
 <text text-anchor="start" x="159" y="-270.3" font-family="Times,serif" font-size="14.00">count :integer</text>
-<text text-anchor="start" x="159" y="-256.3" font-family="Times,serif" font-size="14.00">remain :integer</text>
+<text text-anchor="start" x="159" y="-256.3" font-family="Times,serif" font-size="14.00">stock :integer</text>
 <text text-anchor="start" x="159" y="-242.3" font-family="Times,serif" font-size="14.00">category :string</text>
 </g>
 <!-- Library&#45;&gt;Publication -->
@@ -133,7 +133,7 @@
 <text text-anchor="start" x="159" y="-105.3" font-family="Times,serif" font-size="14.00">author :string</text>
 <text text-anchor="start" x="159" y="-91.3" font-family="Times,serif" font-size="14.00">name :string</text>
 <text text-anchor="start" x="159" y="-77.3" font-family="Times,serif" font-size="14.00">count :integer</text>
-<text text-anchor="start" x="159" y="-63.3" font-family="Times,serif" font-size="14.00">remain :integer</text>
+<text text-anchor="start" x="159" y="-63.3" font-family="Times,serif" font-size="14.00">stock :integer</text>
 <text text-anchor="start" x="159" y="-49.3" font-family="Times,serif" font-size="14.00">issn :string</text>
 <text text-anchor="start" x="159" y="-35.3" font-family="Times,serif" font-size="14.00">interval :integer</text>
 <text text-anchor="start" x="159" y="-21.3" font-family="Times,serif" font-size="14.00">created_at :datetime</text>

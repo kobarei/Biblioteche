@@ -10,7 +10,7 @@ RSpec.describe "magazines/index", :type => :view do
         :author => "Author",
         :name => "Name",
         :count => 3,
-        :remain => 4,
+        :stock => 4,
         :issn => "Issn",
         :interval => 5
       ),
@@ -21,7 +21,7 @@ RSpec.describe "magazines/index", :type => :view do
         :author => "Author",
         :name => "Name",
         :count => 3,
-        :remain => 4,
+        :stock => 4,
         :issn => "Issn",
         :interval => 5
       )

@@ -9,7 +9,7 @@ RSpec.describe "books/new", :type => :view do
       :author => "MyString",
       :name => "MyString",
       :count => 1,
-      :remain => 1,
+      :stock => 1,
       :isbn => "MyString"
     ))
   end
@@ -31,7 +31,7 @@ RSpec.describe "books/new", :type => :view do
 
       assert_select "input#book_count[name=?]", "book[count]"
 
-      assert_select "input#book_remain[name=?]", "book[remain]"
+      assert_select "input#book_stock[name=?]", "book[stock]"
 
       assert_select "input#book_isbn[name=?]", "book[isbn]"
     end

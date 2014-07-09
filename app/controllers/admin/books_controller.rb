@@ -59,6 +59,6 @@ class Admin::BooksController < AdminController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def book_params
-      params.require(:book).permit(:library_id, :age_limit, :status, :author, :name, :count, :remain, :isbn)
+      params.require(:book).permit(:library_id, :age_limit, :status, :author, :name, :count, :stock, :isbn)
     end
 end

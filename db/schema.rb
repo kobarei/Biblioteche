@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 20140622160911) do
     t.string   "author"
     t.string   "name"
     t.integer  "count"
-    t.integer  "remain"
+    t.integer  "stock"
     t.string   "isbn"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -56,7 +56,7 @@ ActiveRecord::Schema.define(version: 20140622160911) do
     t.string   "author"
     t.string   "name"
     t.integer  "count"
-    t.integer  "remain"
+    t.integer  "stock"
     t.string   "issn"
     t.integer  "interval"
     t.datetime "created_at"
@@ -74,7 +74,7 @@ ActiveRecord::Schema.define(version: 20140622160911) do
     t.string   "author"
     t.string   "name"
     t.integer  "count"
-    t.integer  "remain"
+    t.integer  "stock"
     t.string   "category"
   end
 

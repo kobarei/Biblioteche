@@ -9,7 +9,7 @@ RSpec.describe "magazines/edit", :type => :view do
       :author => "MyString",
       :name => "MyString",
       :count => 1,
-      :remain => 1,
+      :stock => 1,
       :issn => "MyString",
       :interval => 1
     ))
@@ -32,7 +32,7 @@ RSpec.describe "magazines/edit", :type => :view do
 
       assert_select "input#magazine_count[name=?]", "magazine[count]"
 
-      assert_select "input#magazine_remain[name=?]", "magazine[remain]"
+      assert_select "input#magazine_stock[name=?]", "magazine[stock]"
 
       assert_select "input#magazine_issn[name=?]", "magazine[issn]"
 

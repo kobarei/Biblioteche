@@ -13,7 +13,7 @@ class Publication < ActiveRecord::Base
 
   before_save do
     self.count     ||= 0
-    self.remain    ||= self.count
+    self.stock    ||= self.count
     self.age_limit ||= 0
   end
 
@@ -41,7 +41,7 @@ class Publication < ActiveRecord::Base
   end
 
   def update_status
-    if remain > 0
+    if stock > 0
       available!
     else
       away!
@@ -49,18 +49,22 @@ class Publication < ActiveRecord::Base
     save
   end
 
+  #
+  # ↓ For Software Engineering
+  #
+
+  def obtain_stock_quantity
+    self.stock
+  end
+
   def increment_stock_quantity_by_1
-    self.remain += 1
+    self.stock += 1
     self.update_status
   end
 
   def decrement_stock_quantity_by_1
-    self.remain -= 1
+    self.stock -= 1
     self.update_status
-  end
-
-  def obtain_stock_quantity
-    self.remain
   end
 
 end

@@ -59,6 +59,6 @@ class Admin::MagazinesController < AdminController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def magazine_params
-      params.require(:magazine).permit(:library_id, :age_limit, :status, :author, :name, :count, :remain, :issn, :interval)
+      params.require(:magazine).permit(:library_id, :age_limit, :status, :author, :name, :count, :stock, :issn, :interval)
     end
 end

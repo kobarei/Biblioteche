@@ -7,7 +7,7 @@ class CreateBooks < ActiveRecord::Migration
       t.string :author
       t.string :name
       t.integer :count
-      t.integer :remain
+      t.integer :stock
       t.string :isbn
 
       t.timestamps

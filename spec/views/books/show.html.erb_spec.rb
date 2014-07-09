@@ -9,7 +9,7 @@ RSpec.describe "books/show", :type => :view do
       :author => "Author",
       :name => "Name",
       :count => 3,
-      :remain => 4,
+      :stock => 4,
       :isbn => "Isbn"
     ))
   end
