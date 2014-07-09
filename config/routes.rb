@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
   root "publications#index"
 
-  resources :reservations, only: [:create, :destroy]
+  resources :reservations, only: [:create, :destroy], controller: :reserve_publications
 
-  resources :borrowings, only: [:create, :destroy]
+  resources :borrowings, only: [:create, :destroy], controller: :lend_publications
 
   resources :libraries
 

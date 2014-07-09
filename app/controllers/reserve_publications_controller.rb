@@ -1,18 +1,10 @@
-class ReservationsController < ApplicationController
+class ReservePublicationsController < ApplicationController
   before_action :set_reservation, only: :destroy
   before_action :set_meta, only: :create
 
   # POST /reservations
   def create
-    @reservation = Reservation.new(reservation_params)
-
-    respond_to do |format|
-      if @reservation.save
-        format.html { redirect_to user_path current_user, notice: 'Reservation was successfully created.' }
-      else
-        format.html { render :new }
-      end
-    end
+    reserve_publication
   end
 
   # DELETE /reservations/1
@@ -36,5 +28,17 @@ class ReservationsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def reservation_params
       params.require(:reservation).permit(:user_id, :book_id, :magazine_id)
+    end
+
+    def reserve_publication
+      @reservation = Reservation.new(reservation_params)
+
+      respond_to do |format|
+        if @reservation.save
+          format.html { redirect_to user_path current_user, notice: 'Reservation was successfully created.' }
+        else
+          format.html { render :new }
+        end
+      end
     end
 end
