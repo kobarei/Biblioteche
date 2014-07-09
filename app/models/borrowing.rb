@@ -6,6 +6,10 @@ class Borrowing < ActiveRecord::Base
     errors.add(:base, "レンタル上限に達しています") unless no_max_reached?
   end
 
+  before_create do
+    self.expire_at = obtain_the_due_date
+  end
+
   after_create do
     reservation = Reservation.alive.user_publication(user, publication)
     reservation.destroy if reservation.present?
@@ -14,6 +18,14 @@ class Borrowing < ActiveRecord::Base
   def no_need_reservation?
     return true if user.borrowingable_position? publication, Reservation.alive.user_publication(user, publication)
     false
+  end
+
+  def obtain_the_lending_date
+    DateTime.now
+  end
+
+  def obtain_the_due_date
+    DateTime.now.end_of_day + 1.week
   end
 
 end

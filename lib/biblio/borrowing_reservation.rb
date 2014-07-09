@@ -19,10 +19,6 @@ module Biblio
         scope :expired, -> { where.not expired_at: nil }
         scope :user, -> user_id { where user_id: user_id }
 
-        before_create do
-          self.expire_at = 7.days.since.end_of_day
-        end
-
         after_create do
           publication.decrement_stock_quantity_by_1
         end

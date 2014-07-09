@@ -49,10 +49,6 @@ class Publication < ActiveRecord::Base
     save
   end
 
-  #
-  # ↓ For Software Engineering
-  #
-
   def obtain_stock_quantity
     self.stock
   end
