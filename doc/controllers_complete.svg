@@ -156,10 +156,10 @@
 <g id="edge1" class="edge"><title>ApplicationController&#45;&gt;BooksController</title>
 <path fill="none" stroke="black" d="M33.6911,-11.5367C76.4024,-35.0174 130.239,-64.6145 169.854,-86.3928"/>
 </g>
-<!-- LendingsController -->
-<g id="node11" class="node"><title>LendingsController</title>
+<!-- BorrowingsController -->
+<g id="node11" class="node"><title>BorrowingsController</title>
 <path fill="none" stroke="black" d="M-313.198,380.837C-313.198,380.837 -211.55,380.837 -211.55,380.837 -205.55,380.837 -199.55,374.837 -199.55,368.837 -199.55,368.837 -199.55,232.837 -199.55,232.837 -199.55,226.837 -205.55,220.837 -211.55,220.837 -211.55,220.837 -313.198,220.837 -313.198,220.837 -319.198,220.837 -325.198,226.837 -325.198,232.837 -325.198,232.837 -325.198,368.837 -325.198,368.837 -325.198,374.837 -319.198,380.837 -313.198,380.837"/>
-<text text-anchor="middle" x="-262.374" y="236.037" font-family="Times,serif" font-size="14.00">LendingsController</text>
+<text text-anchor="middle" x="-262.374" y="236.037" font-family="Times,serif" font-size="14.00">BorrowingsController</text>
 <polyline fill="none" stroke="black" points="-325.198,242.837 -199.55,242.837 "/>
 <text text-anchor="start" x="-317.198" y="258.037" font-family="Times,serif" font-size="14.00">create</text>
 <text text-anchor="start" x="-317.198" y="272.037" font-family="Times,serif" font-size="14.00">destroy</text>
@@ -167,12 +167,12 @@
 <polyline fill="none" stroke="black" points="-325.198,292.837 -199.55,292.837 "/>
 <polyline fill="none" stroke="black" points="-325.198,316.837 -199.55,316.837 "/>
 <text text-anchor="start" x="-317.198" y="332.037" font-family="Times,serif" font-size="14.00">_layout</text>
-<text text-anchor="start" x="-317.198" y="346.037" font-family="Times,serif" font-size="14.00">lending_params</text>
-<text text-anchor="start" x="-317.198" y="360.037" font-family="Times,serif" font-size="14.00">set_lending</text>
+<text text-anchor="start" x="-317.198" y="346.037" font-family="Times,serif" font-size="14.00">borrowing_params</text>
+<text text-anchor="start" x="-317.198" y="360.037" font-family="Times,serif" font-size="14.00">set_borrowing</text>
 <text text-anchor="start" x="-317.198" y="374.037" font-family="Times,serif" font-size="14.00">set_meta</text>
 </g>
-<!-- ApplicationController&#45;&gt;LendingsController -->
-<g id="edge2" class="edge"><title>ApplicationController&#45;&gt;LendingsController</title>
+<!-- ApplicationController&#45;&gt;BorrowingsController -->
+<g id="edge2" class="edge"><title>ApplicationController&#45;&gt;BorrowingsController</title>
 <path fill="none" stroke="black" d="M-79.2878,79.0668C-113.25,120.205 -161.102,178.168 -199.368,224.519"/>
 </g>
 <!-- LibrariesController -->

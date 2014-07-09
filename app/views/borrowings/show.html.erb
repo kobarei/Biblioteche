@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @borrowing.user %>
+</p>
+
+<p>
+  <strong>Publication:</strong>
+  <%= @borrowing.publication %>
+</p>
+
+<p>
+  <strong>Expire at:</strong>
+  <%= @borrowing.expire_at %>
+</p>
+
+<p>
+  <strong>Expired at:</strong>
+  <%= @borrowing.expired_at %>
+</p>
+
+<%= link_to 'Edit', edit_borrowing_path(@borrowing) %> |
+<%= link_to 'Back', borrowings_path %>

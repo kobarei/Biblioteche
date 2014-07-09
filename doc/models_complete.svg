@@ -34,10 +34,10 @@
 <text text-anchor="start" x="8" y="-28.3" font-family="Times,serif" font-size="14.00">created_at :datetime</text>
 <text text-anchor="start" x="8" y="-14.3" font-family="Times,serif" font-size="14.00">updated_at :datetime</text>
 </g>
-<!-- Lending -->
-<g id="node3" class="node"><title>Lending</title>
+<!-- Borrowing -->
+<g id="node3" class="node"><title>Borrowing</title>
 <path fill="none" stroke="black" d="M313.614,-28.5C313.614,-28.5 423.397,-28.5 423.397,-28.5 429.397,-28.5 435.397,-34.5 435.397,-40.5 435.397,-40.5 435.397,-158.5 435.397,-158.5 435.397,-164.5 429.397,-170.5 423.397,-170.5 423.397,-170.5 313.614,-170.5 313.614,-170.5 307.614,-170.5 301.614,-164.5 301.614,-158.5 301.614,-158.5 301.614,-40.5 301.614,-40.5 301.614,-34.5 307.614,-28.5 313.614,-28.5"/>
-<text text-anchor="middle" x="368.505" y="-155.3" font-family="Times,serif" font-size="14.00">Lending</text>
+<text text-anchor="middle" x="368.505" y="-155.3" font-family="Times,serif" font-size="14.00">Borrowing</text>
 <polyline fill="none" stroke="black" points="301.614,-148.5 435.397,-148.5 "/>
 <text text-anchor="start" x="309.614" y="-133.3" font-family="Times,serif" font-size="14.00">id :integer</text>
 <text text-anchor="start" x="309.614" y="-119.3" font-family="Times,serif" font-size="14.00">user_id :integer</text>
@@ -143,8 +143,8 @@
 <g id="edge1" class="edge"><title>Publication&#45;&gt;Book</title>
 <path fill="none" stroke="black" d="M156.523,-235.229C146.946,-220.895 137.046,-206.077 127.47,-191.745"/>
 </g>
-<!-- Publication&#45;&gt;Lending -->
-<g id="edge8" class="edge"><title>Publication&#45;&gt;Lending</title>
+<!-- Publication&#45;&gt;Borrowing -->
+<g id="edge8" class="edge"><title>Publication&#45;&gt;Borrowing</title>
 <path fill="none" stroke="#9497e1" d="M283.068,-228.374C294.039,-211.953 305.295,-195.107 315.887,-179.253"/>
 <ellipse fill="none" stroke="#9497e1" cx="280.71" cy="-231.903" rx="4.00002" ry="4.00002"/>
 <polygon fill="#9497e1" stroke="#9497e1" points="316.142,-178.871 325.439,-173.057 318.92,-174.714 321.698,-170.557 321.698,-170.557 321.698,-170.557 318.92,-174.714 317.956,-168.057 316.142,-178.871 316.142,-178.871"/>
@@ -167,8 +167,8 @@
 <text text-anchor="start" x="542.614" y="-49.3" font-family="Times,serif" font-size="14.00">book_id :integer</text>
 <text text-anchor="start" x="542.614" y="-35.3" font-family="Times,serif" font-size="14.00">magazine_id :integer</text>
 </g>
-<!-- User&#45;&gt;Lending -->
-<g id="edge12" class="edge"><title>User&#45;&gt;Lending</title>
+<!-- User&#45;&gt;Borrowing -->
+<g id="edge12" class="edge"><title>User&#45;&gt;Borrowing</title>
 <path fill="none" stroke="#1ca805" d="M398.559,-248.155C394.116,-226.328 389.285,-202.591 384.821,-180.661"/>
 <ellipse fill="none" stroke="#1ca805" cx="399.405" cy="-252.311" rx="4.00001" ry="4.00001"/>
 <polygon fill="#1ca805" stroke="#1ca805" points="384.794,-180.525 387.209,-169.828 383.796,-175.625 382.799,-170.726 382.799,-170.726 382.799,-170.726 383.796,-175.625 378.389,-171.623 384.794,-180.525 384.794,-180.525"/>
@@ -184,8 +184,8 @@
 <ellipse fill="none" stroke="black" cx="459.505" cy="-629.5" rx="81.1422" ry="18"/>
 <text text-anchor="middle" x="459.505" y="-625.3" font-family="Times,serif" font-size="14.00">ActiveRecord::Base</text>
 </g>
-<!-- ActiveRecord::Base&#45;&gt;Lending -->
-<g id="edge2" class="edge"><title>ActiveRecord::Base&#45;&gt;Lending</title>
+<!-- ActiveRecord::Base&#45;&gt;Borrowing -->
+<g id="edge2" class="edge"><title>ActiveRecord::Base&#45;&gt;Borrowing</title>
 <path fill="none" stroke="black" d="M413.186,-614.617C385.509,-603.701 352.518,-585.481 335.505,-557 263.685,-436.769 306.4,-265.709 339.983,-170.799"/>
 </g>
 <!-- ActiveRecord::Base&#45;&gt;Library -->

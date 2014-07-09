@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   resources :reservations, only: [:create, :destroy]
 
-  resources :lendings, only: [:create, :destroy]
+  resources :borrowings, only: [:create, :destroy]
 
   resources :libraries
 

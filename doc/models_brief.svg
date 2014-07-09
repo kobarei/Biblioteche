@@ -22,10 +22,10 @@
 <ellipse fill="none" stroke="black" cx="38.4497" cy="-18" rx="29.0429" ry="18"/>
 <text text-anchor="middle" x="38.4497" y="-13.8" font-family="Times,serif" font-size="14.00">Book</text>
 </g>
-<!-- Lending -->
-<g id="node3" class="node"><title>Lending</title>
+<!-- Borrowing -->
+<g id="node3" class="node"><title>Borrowing</title>
 <ellipse fill="none" stroke="black" cx="233.45" cy="-18" rx="39.6558" ry="18"/>
-<text text-anchor="middle" x="233.45" y="-13.8" font-family="Times,serif" font-size="14.00">Lending</text>
+<text text-anchor="middle" x="233.45" y="-13.8" font-family="Times,serif" font-size="14.00">Borrowing</text>
 </g>
 <!-- Library -->
 <g id="node4" class="node"><title>Library</title>
@@ -74,8 +74,8 @@
 <g id="edge1" class="edge"><title>Publication&#45;&gt;Book</title>
 <path fill="none" stroke="black" d="M110.032,-73.4647C93.939,-61.2201 71.7209,-44.315 56.3246,-32.6005"/>
 </g>
-<!-- Publication&#45;&gt;Lending -->
-<g id="edge8" class="edge"><title>Publication&#45;&gt;Lending</title>
+<!-- Publication&#45;&gt;Borrowing -->
+<g id="edge8" class="edge"><title>Publication&#45;&gt;Borrowing</title>
 <path fill="none" stroke="#a4ae76" d="M159.702,-69.1195C173.422,-59.7956 189.749,-48.6996 203.549,-39.3209"/>
 <ellipse fill="none" stroke="#a4ae76" cx="156.107" cy="-71.5627" rx="4.00002" ry="4.00002"/>
 <polygon fill="#a4ae76" stroke="#a4ae76" points="203.929,-39.0626 214.729,-37.1635 208.064,-36.2522 212.2,-33.4417 212.2,-33.4417 212.2,-33.4417 208.064,-36.2522 209.67,-29.7198 203.929,-39.0626 203.929,-39.0626"/>
@@ -89,8 +89,8 @@
 <ellipse fill="none" stroke="black" cx="378.45" cy="-18" rx="52.1934" ry="18"/>
 <text text-anchor="middle" x="378.45" y="-13.8" font-family="Times,serif" font-size="14.00">Reservation</text>
 </g>
-<!-- User&#45;&gt;Lending -->
-<g id="edge12" class="edge"><title>User&#45;&gt;Lending</title>
+<!-- User&#45;&gt;Borrowing -->
+<g id="edge12" class="edge"><title>User&#45;&gt;Borrowing</title>
 <path fill="none" stroke="#a94c8e" d="M265.281,-66.4085C260.394,-59.1291 254.954,-51.027 249.973,-43.6096"/>
 <ellipse fill="none" stroke="#a94c8e" cx="267.555" cy="-69.795" rx="4.00002" ry="4.00002"/>
 <polygon fill="#a94c8e" stroke="#a94c8e" points="249.973,-43.6092 248.135,-32.7985 247.186,-39.4581 244.399,-35.307 244.399,-35.307 244.399,-35.307 247.186,-39.4581 240.663,-37.8155 249.973,-43.6092 249.973,-43.6092"/>
@@ -106,8 +106,8 @@
 <ellipse fill="none" stroke="black" cx="306.45" cy="-252.5" rx="81.1422" ry="18"/>
 <text text-anchor="middle" x="306.45" y="-248.3" font-family="Times,serif" font-size="14.00">ActiveRecord::Base</text>
 </g>
-<!-- ActiveRecord::Base&#45;&gt;Lending -->
-<g id="edge2" class="edge"><title>ActiveRecord::Base&#45;&gt;Lending</title>
+<!-- ActiveRecord::Base&#45;&gt;Borrowing -->
+<g id="edge2" class="edge"><title>ActiveRecord::Base&#45;&gt;Borrowing</title>
 <path fill="none" stroke="black" d="M278.958,-235.344C260.595,-222.837 237.953,-203.672 227.45,-180 205.896,-131.422 219.641,-66.2666 228.161,-35.8994"/>
 </g>
 <!-- ActiveRecord::Base&#45;&gt;Library -->

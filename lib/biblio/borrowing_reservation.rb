@@ -1,10 +1,10 @@
 module Biblio
-  module LendingReservation
+  module BorrowingReservation
 
-    def self.included(base)
-      base.extend(ClassMethods)
+    def self.included(klass)
+      klass.extend ClassMethods
 
-      base.class_eval {
+      klass.class_eval {
         belongs_to :user
         belongs_to :book
         belongs_to :magazine
@@ -12,7 +12,7 @@ module Biblio
         validate on: :create do
           errors.add(:base, "年齢制限がかかっています") unless pass_age_limit?
           errors.add(:base, "不正な蔵書です")         unless proper_library?
-          errors.add(:base, "すでにレンタルしています") unless no_publication_lending?
+          errors.add(:base, "すでにレンタルしています") unless no_publication_borrowing?
         end
 
         scope :alive, -> { where expired_at: nil }
@@ -24,8 +24,7 @@ module Biblio
         end
 
         after_create do
-          publication.remain -= 1
-          publication.update_status
+          publication.decrement_stock_quantity_by_1
         end
 
       }
@@ -39,8 +38,7 @@ module Biblio
 
     def destroy
       update expired_at: Time.now
-      publication.remain += 1
-      publication.update_status
+      publication.increment_stock_quantity_by_1
     end
 
     def publication
@@ -59,8 +57,8 @@ module Biblio
       false
     end
 
-    def no_publication_lending?
-      return true if Lending.alive.user_publication(user, publication).blank?
+    def no_publication_borrowing?
+      return true if Borrowing.alive.user_publication(user, publication).blank?
       false
     end
 

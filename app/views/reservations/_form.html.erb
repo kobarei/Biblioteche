@@ -1,7 +1,7 @@
 <%= form_for(@reservation) do |f| %>
   <% if @reservation.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@reservation.errors.count, "error") %> prohibited this lending from being saved:</h2>
+      <h2><%= pluralize(@reservation.errors.count, "error") %> prohibited this borrowing from being saved:</h2>
 
       <ul>
       <% @reservation.errors.full_messages.each do |message| %>
@@ -46,7 +46,7 @@
 
 <% if current_user %>
   <% if @reservation.publication.available? %>
-    <%= link_to 'Lending', lendings_path(lending: { "#{@reservation.publication.class.name.downcase}_id" => @reservation.publication.id }), method: :post %>
+    <%= link_to 'Borrowing', borrowings_path(borrowing: { "#{@reservation.publication.class.name.downcase}_id" => @reservation.publication.id }), method: :post %>
   <% end %>
   <%= link_to 'Reservation', reservations_path(reservation: { "#{@reservation.publication.class.name.downcase}_id" => @reservation.publication.id }), method: :post %>
 <% end %>

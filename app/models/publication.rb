@@ -2,7 +2,7 @@ class Publication < ActiveRecord::Base
   self.inheritance_column = 'category'
 
   belongs_to :library
-  has_many :lendings
+  has_many :borrowings
 
   enum status: %i(available away)
 
@@ -21,8 +21,8 @@ class Publication < ActiveRecord::Base
     available!
   end
 
-  def lendings
-    Lending.alive.where "#{self.class.name.downcase}_id" => id
+  def borrowings
+    Borrowing.alive.where "#{self.class.name.downcase}_id" => id
   end
 
   def reservations
@@ -48,4 +48,19 @@ class Publication < ActiveRecord::Base
     end
     save
   end
+
+  def increment_stock_quantity_by_1
+    self.remain += 1
+    self.update_status
+  end
+
+  def decrement_stock_quantity_by_1
+    self.remain -= 1
+    self.update_status
+  end
+
+  def obtain_stock_quantity
+    self.remain
+  end
+
 end

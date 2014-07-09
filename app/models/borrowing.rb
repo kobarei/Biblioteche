@@ -1,5 +1,5 @@
-class Lending < ActiveRecord::Base
-  include Biblio::LendingReservation
+class Borrowing < ActiveRecord::Base
+  include Biblio::BorrowingReservation
 
   validate on: :create do
     errors.add(:base, "借りるには予約する必要があります") unless no_need_reservation?
@@ -12,7 +12,7 @@ class Lending < ActiveRecord::Base
   end
 
   def no_need_reservation?
-    return true if user.lendingable_position? publication, Reservation.alive.user_publication(user, publication)
+    return true if user.borrowingable_position? publication, Reservation.alive.user_publication(user, publication)
     false
   end
 

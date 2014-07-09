@@ -20,29 +20,29 @@
 </div>
 
 <div class="col-md-6">
-  <h1>Lendings</h1>
-  <% @user.lendings.reverse_each do |lending| %>
+  <h1>Borrowings</h1>
+  <% @user.borrowings.reverse_each do |borrowing| %>
     <p>
       <strong>Publication:</strong>
-      <%= lending.publication.name %>
+      <%= borrowing.publication.name %>
     </p>
 
     <p>
       <strong>Author:</strong>
-      <%= lending.publication.author %>
+      <%= borrowing.publication.author %>
     </p>
 
     <p>
       <strong>Expire at:</strong>
-      <%= lending.expire_at %>
+      <%= borrowing.expire_at %>
     </p>
 
     <p>
       <strong>Expired at:</strong>
-      <%= lending.expired_at %>
+      <%= borrowing.expired_at %>
     </p>
-    <% if lending.expired_at.nil? %>
-      <%= link_to '返却', lending, method: :delete, data: { confirm: 'Are you sure?' } %>
+    <% if borrowing.expired_at.nil? %>
+      <%= link_to '返却', borrowing, method: :delete, data: { confirm: 'Are you sure?' } %>
     <% end %>
   <% end %>
 </div>
@@ -69,8 +69,8 @@
       <strong>Expired at:</strong>
       <%= reservation.expired_at %>
     </p>
-    <% if reservation.expired_at.nil? && lendingable?(@user, reservation.publication, reservation) %>
-      <%= link_to 'レンタル', lendings_path(lending: { "#{reservation.publication.class.name.downcase}_id" => reservation.publication.id }), method: :post %>
+    <% if reservation.expired_at.nil? && borrowingable?(@user, reservation.publication, reservation) %>
+      <%= link_to 'レンタル', borrowings_path(borrowing: { "#{reservation.publication.class.name.downcase}_id" => reservation.publication.id }), method: :post %>
     <% end %>
     <% if reservation.expired_at.nil? %>
       <%= link_to '取り消し', reservation, method: :delete, data: { confirm: 'Are you sure?' } %>

@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 20140622160911) do
 
   add_index "books", ["library_id"], name: "index_books_on_library_id"
 
-  create_table "lendings", force: true do |t|
+  create_table "borrowings", force: true do |t|
     t.integer  "user_id"
     t.datetime "expire_at"
     t.datetime "created_at"
@@ -38,9 +38,9 @@ ActiveRecord::Schema.define(version: 20140622160911) do
     t.integer  "magazine_id"
   end
 
-  add_index "lendings", ["book_id"], name: "index_lendings_on_book_id"
-  add_index "lendings", ["magazine_id"], name: "index_lendings_on_magazine_id"
-  add_index "lendings", ["user_id"], name: "index_lendings_on_user_id"
+  add_index "borrowings", ["book_id"], name: "index_borrowings_on_book_id"
+  add_index "borrowings", ["magazine_id"], name: "index_borrowings_on_magazine_id"
+  add_index "borrowings", ["user_id"], name: "index_borrowings_on_user_id"
 
   create_table "libraries", force: true do |t|
     t.string   "name"

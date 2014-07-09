@@ -38,10 +38,10 @@
 <%= link_to 'Back', publications_path %>
 <% if current_user %>
   <% if @book.available? %>
-    <%= link_to 'Lending', lendings_path(lending: { book_id: @book.id }), method: :post %>
+    <%= link_to 'Borrowing', borrowings_path(borrowing: { book_id: @book.id }), method: :post %>
   <% end %>
   <%= link_to 'Reservation', reservations_path(reservation: { book_id: @book.id }), method: :post %>
 <% else %>
-  Lendingするには<%= link_to 'ログイン', new_session_path %>してください
+  Borrowingするには<%= link_to 'ログイン', new_session_path %>してください
 <% end %>
 

@@ -1,0 +1,31 @@
+<h1>Listing borrowings</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Publication</th>
+      <th>Expire at</th>
+      <th>Expired at</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @borrowings.each do |borrowing| %>
+      <tr>
+        <td><%= borrowing.user %></td>
+        <td><%= borrowing.publication %></td>
+        <td><%= borrowing.expire_at %></td>
+        <td><%= borrowing.expired_at %></td>
+        <td><%= link_to 'Show', borrowing %></td>
+        <td><%= link_to 'Edit', edit_borrowing_path(borrowing) %></td>
+        <td><%= link_to 'Destroy', borrowing, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Borrowing', new_borrowing_path %>

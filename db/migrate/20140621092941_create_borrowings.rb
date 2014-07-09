@@ -1,6 +1,6 @@
-class CreateLendings < ActiveRecord::Migration
+class CreateBorrowings < ActiveRecord::Migration
   def change
-    create_table :lendings do |t|
+    create_table :borrowings do |t|
       t.references :user, index: true
       t.references :publication, index: true
       t.datetime :expire_at

@@ -1,0 +1,52 @@
+<%= form_for(@borrowing) do |f| %>
+  <% if @borrowing.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@borrowing.errors.count, "error") %> prohibited this borrowing from being saved:</h2>
+
+      <ul>
+      <% @borrowing.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+<% end %>
+
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @borrowing.publication.name %>
+</p>
+
+<p>
+  <strong>Author:</strong>
+  <%= @borrowing.publication.author %>
+</p>
+
+<p>
+  <strong>Isbn:</strong>
+  <%= @borrowing.publication.try(:isbn) %>
+</p>
+
+<p>
+  <strong>Issn:</strong>
+  <%= @borrowing.publication.try(:issn) %>
+</p>
+
+<p>
+  <strong>Age limit:</strong>
+  <%= @borrowing.publication.age_limit %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @borrowing.publication.status %>
+</p>
+
+<% if current_user %>
+  <% if @borrowing.publication.available? %>
+    <%= link_to 'Borrowing', borrowings_path(borrowing: { "#{@borrowing.publication.class.name.downcase}_id" => @borrowing.publication.id }), method: :post %>
+  <% end %>
+  <%= link_to 'Reservation', reservations_path(reservation: { "#{@borrowing.publication.class.name.downcase}_id" => @borrowing.publication.id }), method: :post %>
+<% end %>

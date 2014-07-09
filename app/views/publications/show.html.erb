@@ -33,9 +33,9 @@
 <%= link_to 'Back', publications_path %>
 <% if current_user %>
   <% if @publication.available? %>
-    <%= link_to 'Lending', lendings_path(lending: { publication_id: @publication.id }), method: :post %>
+    <%= link_to 'Borrowing', borrowings_path(borrowing: { publication_id: @publication.id }), method: :post %>
   <% end %>
   <%= link_to 'Reservation', reservations_path(reservation: { publication_id: @publication.id }), method: :post %>
 <% else %>
-  Lendingするには<%= link_to 'ログイン', new_session_path %>してください
+  Borrowingするには<%= link_to 'ログイン', new_session_path %>してください
 <% end %>

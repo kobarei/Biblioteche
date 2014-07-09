@@ -66,13 +66,13 @@
 <g id="edge1" class="edge"><title>ApplicationController&#45;&gt;BooksController</title>
 <path fill="none" stroke="black" d="M95.4411,0.711164C139.683,-21.7552 217.617,-61.3311 261.253,-83.4898"/>
 </g>
-<!-- LendingsController -->
-<g id="node11" class="node"><title>LendingsController</title>
+<!-- BorrowingsController -->
+<g id="node11" class="node"><title>BorrowingsController</title>
 <ellipse fill="none" stroke="black" cx="-96.751" cy="139.843" rx="79.2385" ry="18"/>
-<text text-anchor="middle" x="-96.751" y="144.043" font-family="Times,serif" font-size="14.00">LendingsController</text>
+<text text-anchor="middle" x="-96.751" y="144.043" font-family="Times,serif" font-size="14.00">BorrowingsController</text>
 </g>
-<!-- ApplicationController&#45;&gt;LendingsController -->
-<g id="edge2" class="edge"><title>ApplicationController&#45;&gt;LendingsController</title>
+<!-- ApplicationController&#45;&gt;BorrowingsController -->
+<g id="edge2" class="edge"><title>ApplicationController&#45;&gt;BorrowingsController</title>
 <path fill="none" stroke="black" d="M39.5791,35.0294C9.24265,58.3528 -44.0666,99.3383 -74.251,122.545"/>
 </g>
 <!-- LibrariesController -->

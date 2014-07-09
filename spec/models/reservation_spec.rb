@@ -1,6 +1,6 @@
 require "rails_helper"
 
-describe Lending do
+describe Borrowing do
   before do
     FactoryGirl.create :child_user_1
     FactoryGirl.create :adult_user_1
@@ -60,21 +60,21 @@ describe Lending do
 
   end
 
-  describe "no_publication_lending? validate test" do
+  describe "no_publication_borrowing? validate test" do
 
     context "まだその蔵書をレンタルしていない" do
       let(:reservation) { FactoryGirl.build :child_child_reservation_2 }
       it { expect(reservation).to be_valid }
-      it { expect(reservation.send(:no_publication_lending?)).to eq(true) }
+      it { expect(reservation.send(:no_publication_borrowing?)).to eq(true) }
     end
 
     context "すでにその蔵書をレンタルしている" do
       before do
-        FactoryGirl.create :child_child_lending_1
+        FactoryGirl.create :child_child_borrowing_1
       end
       let(:reservation) { FactoryGirl.build :child_child_reservation_2 }
       it { expect(reservation).not_to be_valid }
-      it { expect(reservation.send(:no_publication_lending?)).to eq(false) }
+      it { expect(reservation.send(:no_publication_borrowing?)).to eq(false) }
     end
 
   end

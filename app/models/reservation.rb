@@ -1,5 +1,5 @@
 class Reservation < ActiveRecord::Base
-  include Biblio::LendingReservation
+  include Biblio::BorrowingReservation
 
   validate on: :create do
     errors.add(:base, "すでに予約しています") unless no_publication_reservation?
