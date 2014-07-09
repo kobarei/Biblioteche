@@ -4,8 +4,7 @@ class Admin::PublicationsController < AdminController
 
   # GET /publications
   def index
-    @books = Book.library current_library
-    @magazines = Magazine.library current_library
+    obtain_the_publication_list
   end
 
   def show
@@ -22,26 +21,12 @@ class Admin::PublicationsController < AdminController
 
   # POST /publications
   def create
-    @publication = params[:type].capitalize.constantize.new publication_params
-
-    respond_to do |format|
-      if @publication.save
-        format.html { redirect_to admin_publication_path(@publication, type: params[:type]), notice: 'Publication was successfully created.' }
-      else
-        format.html { render :new }
-      end
-    end
+    register_publication
   end
 
   # PATCH/PUT /publications/1
   def update
-    respond_to do |format|
-      if @publication.update publication_params
-        format.html { redirect_to admin_publication_path(@publication, type: params[:type]), notice: 'Publication was successfully updated.' }
-      else
-        format.html { render :edit }
-      end
-    end
+    add_publication
   end
 
   # DELETE /publications/1
@@ -67,5 +52,31 @@ class Admin::PublicationsController < AdminController
       params.require(params[:type]).permit(:library_id, :age_limit, :status, :author, :name, :count, :stock, :issn, :isbn, :interval)
     end
 
+    def register_publication
+      @publication = params[:type].capitalize.constantize.new publication_params
+
+      respond_to do |format|
+        if @publication.save
+          format.html { redirect_to admin_publication_path(@publication, type: params[:type]), notice: 'Publication was successfully created.' }
+        else
+          format.html { render :new }
+        end
+      end
+    end
+
+    def add_publication
+      respond_to do |format|
+        if @publication.update publication_params
+          format.html { redirect_to admin_publication_path(@publication, type: params[:type]), notice: 'Publication was successfully updated.' }
+        else
+          format.html { render :edit }
+        end
+      end
+    end
+
+    def obtain_the_publication_list
+      @books     = Book.library current_library
+      @magazines = Magazine.library current_library
+    end
 
 end
