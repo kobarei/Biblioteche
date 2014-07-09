@@ -1,10 +1,10 @@
-<%= form_for(son) do |f| %>
-  <% if son.errors.any? %>
+<%= form_for(model) do |f| %>
+  <% if model.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(son.errors.count, "error") %> prohibited this borrowing from being saved:</h2>
+      <h2><%= pluralize(model.errors.count, "error") %> prohibited this borrowing from being saved:</h2>
 
       <ul>
-      <% son.errors.full_messages.each do |message| %>
+      <% model.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>

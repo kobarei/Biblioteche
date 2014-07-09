@@ -13,7 +13,7 @@ class Publication < ActiveRecord::Base
 
   before_save do
     self.count     ||= 0
-    self.stock    ||= self.count
+    self.stock     ||= self.count
     self.age_limit ||= 0
   end
 

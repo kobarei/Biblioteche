@@ -25,8 +25,8 @@ module ApplicationHelper
     pub.status
   end
 
-  def show_error_message(son)
-    render "partials/error_message", son: son
+  def show_error_message(model)
+    render "partials/error_message", model: model
   end
 
   def show_search_result
