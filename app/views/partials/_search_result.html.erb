@@ -1,0 +1,11 @@
+<% if @books.count + @magazines.count == 0 %>
+  <div class="alert alert-dismissable alert-danger">
+    <button type="button" class="close" data-dismiss="alert">×</button>
+    <%= "#{params[:q]}の検索結果: 該当する蔵書はありません" %>
+  </div>
+<% else %>
+  <div class="alert alert-dismissable alert-info">
+    <button type="button" class="close" data-dismiss="alert">×</button>
+    <%= "#{params[:q]}の検索結果: #{@books.count + @magazines.count}件見つかりました" %>
+  </div>
+<% end %>

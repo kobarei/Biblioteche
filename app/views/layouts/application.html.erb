@@ -25,9 +25,8 @@
           <%= link_to "所蔵物", publications_path %>
         </li>
       </ul>
-      <%= form_tag "/publications", method: "get", class: "navbar-form navbar-left" do %>
-        <%= text_field_tag(:q, params[:q], class: "form-control col-lg-8", placeholder: "Search") %>
-      <% end %>
+
+      <%= show_search_box %>
 
       <ul class="nav navbar-nav navbar-right">
         <% if current_user %>

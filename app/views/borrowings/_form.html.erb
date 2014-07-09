@@ -1,16 +1,4 @@
-<%= form_for(@borrowing) do |f| %>
-  <% if @borrowing.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@borrowing.errors.count, "error") %> prohibited this borrowing from being saved:</h2>
-
-      <ul>
-      <% @borrowing.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-<% end %>
+<%= show_error_message @borrowing %>
 
 <p id="notice"><%= notice %></p>
 
