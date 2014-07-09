@@ -21,15 +21,15 @@
           <td><%= book.isbn %></td>
           <td><%= book.age_limit %></td>
           <td><%= book.status %></td>
-          <td><%= link_to 'Show', [:admin, book] %></td>
-          <td><%= link_to 'Edit', edit_admin_book_path(book) %></td>
-          <td><%= link_to 'Destroy', [:admin, book], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td><%= link_to 'Show', admin_publication_path(book, type: :book) %></td>
+          <td><%= link_to 'Edit', edit_admin_publication_path(book, type: :book) %></td>
+          <td><%= link_to 'Destroy', admin_publication_path(book, type: :book), method: :delete, data: { confirm: 'Are you sure?' } %></td>
         </tr>
       <% end %>
     </tbody>
   </table>
 
-  <%= link_to 'New Book', new_admin_book_path, class: "btn btn-primary btn-lg" %>
+  <%= link_to 'New Book', { controller: :publications, action: :new, type: :book }, class: "btn btn-primary btn-lg" %>
 
 </div>
 <div class="col-md-6">
@@ -55,14 +55,14 @@
           <td><%= magazine.issn %></td>
           <td><%= magazine.age_limit %></td>
           <td><%= magazine.status %></td>
-          <td><%= link_to 'Show', [:admin, magazine] %></td>
-          <td><%= link_to 'Edit', edit_admin_magazine_path(magazine) %></td>
-          <td><%= link_to 'Destroy', [:admin, magazine], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td><%= link_to 'Show', admin_publication_path(magazine, type: :magazine) %></td>
+          <td><%= link_to 'Edit', edit_admin_publication_path(magazine, type: :magazine) %></td>
+          <td><%= link_to 'Destroy', admin_publication_path(magazine, type: :magazine), method: :delete, data: { confirm: 'Are you sure?' } %></td>
         </tr>
       <% end %>
     </tbody>
   </table>
 
-  <%= link_to 'New Magazine', new_admin_magazine_path, class: "btn btn-primary btn-lg" %>
+  <%= link_to 'New Magazine', { controller: :publications, action: :new, type: :magazine }, class: "btn btn-primary btn-lg" %>
 
 </div>

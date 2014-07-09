@@ -25,5 +25,6 @@ staff =
 
 staff.save
 
+Library.create name: "kobarei", subdomain: "kobarei"
 Library.create name: "biblio", subdomain: "biblio"
 Library.create name: "book", subdomain: "book"

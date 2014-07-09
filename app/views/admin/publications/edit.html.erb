@@ -1,0 +1,54 @@
+<h1>Editing publication</h1>
+
+<%= form_for(@publication, :url => { action: :update, type: params[:type] }) do |f| %>
+  <% if @publication.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@publication.errors.count, "error") %> prohibited this publication from being saved:</h2>
+
+      <ul>
+      <% @publication.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :age_limit %><br>
+    <%= f.number_field :age_limit %>
+  </div>
+  <div class="field">
+    <%= f.label :author %><br>
+    <%= f.text_field :author %>
+  </div>
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :count %><br>
+    <%= f.number_field :count %>
+  </div>
+  <% if params[:type] == 'book' %>
+    <div class="field">
+      <%= f.label :isbn %><br>
+      <%= f.text_field :isbn %>
+    </div>
+  <% elsif params[:type] == 'magazine' %>
+    <div class="field">
+      <%= f.label :issn %><br>
+      <%= f.text_field :issn %>
+    </div>
+    <div class="field">
+      <%= f.label :interval %><br>
+      <%= f.number_field :interval %>
+    </div>
+  <% end %>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+
+<%= link_to 'Show', admin_publication_path(@publication, type: params[:type]) %> |
+<%= link_to 'Back', :back %>

@@ -26,7 +26,7 @@
         </li>
       </ul>
       <%= form_tag "/publications", method: "get", class: "navbar-form navbar-left" do %>
-        <%= text_field_tag(:q, "", class: "form-control col-lg-8", placeholder: "Search") %>
+        <%= text_field_tag(:q, params[:q], class: "form-control col-lg-8", placeholder: "Search") %>
       <% end %>
 
       <ul class="nav navbar-nav navbar-right">

@@ -1,0 +1,51 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Age limit:</strong>
+  <%= @publication.age_limit %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @publication.status %>
+</p>
+
+<p>
+  <strong>Author:</strong>
+  <%= @publication.author %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @publication.name %>
+</p>
+
+<p>
+  <strong>Count:</strong>
+  <%= @publication.count %>
+</p>
+
+<p>
+  <strong>Stock:</strong>
+  <%= @publication.stock %>
+</p>
+
+<% if params[:type] == 'book' %>
+  <p>
+    <strong>Isbn:</strong>
+    <%= @publication.isbn %>
+  </p>
+<% elsif params[:type] == 'magazine' %>
+  <p>
+    <strong>Issn:</strong>
+    <%= @publication.issn %>
+  </p>
+
+  <p>
+    <strong>Interval:</strong>
+    <%= @publication.interval %>
+  </p>
+<% end %>
+
+<%= link_to 'Edit', edit_admin_publication_path(@publication, type: params[:type]) %> |
+<%= link_to 'Back', :back %>
