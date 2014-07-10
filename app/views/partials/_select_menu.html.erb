@@ -1,7 +1,7 @@
 <ul class="nav nav-pills nav-stacked" style="max-width: 300px;">
   <li><%= choose_operation '本を予約したい', 0  %></li>
   <li><%= choose_operation '本を借りたい',   1 %></li>
-  <li><%= choose_operation '本を返却したい', 2 %></li>
+  <li><%= choose_operation '本を返却したい', 2 if current_user %></li>
 </ul>
 
 <!-- Modal -->
