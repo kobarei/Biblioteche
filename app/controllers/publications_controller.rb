@@ -25,8 +25,8 @@ class PublicationsController < ApplicationController
     end
   end
 
-  def check_the_status_of_publication(publication)
-    publication.status
+  def check_the_status_of_publication
+    @publication.status
   end
 
   def obtain_the_detail_of_publication
@@ -34,7 +34,7 @@ class PublicationsController < ApplicationController
   end
 
   def judge_whether_available_or_not
-    return true if pas_age_limit? && proper_library? && no_publication_borrowing? && no_max_reached?
+    return true if pass_age_limit? && proper_library? && no_publication_borrowing? && no_max_reached?
     false
   end
 
