@@ -11,7 +11,6 @@ class Borrowing < ActiveRecord::Base
   scope :alive, -> { where return_id: nil }
   scope :expired, -> { where.not return_id: nil }
 
-
   before_create do
     self.expire_at = obtain_the_due_date
   end

@@ -1,9 +1,8 @@
 <ul class="nav nav-pills nav-stacked" style="max-width: 300px;">
-  <li><a href="#" data-toggle="modal" data-target="#myModal">本を予約したい</a></li>
-  <li><a href="#" data-toggle="modal" data-target="#myModal">本を借りたい</a></li>
-  <li><a href="#" data-toggle="modal" data-target="#myModal">本を検索したい</a></li>
+  <li><%= choose_operation '本を予約したい'  %></li>
+  <li><%= choose_operation '本を借りたい' %></li>
+  <li><%= choose_operation '本を検索したい' %></li>
 </ul>
-
 
 <!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">

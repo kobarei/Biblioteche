@@ -12,7 +12,7 @@ class Admin::PublicationsController < AdminController
 
   # GET /publications/new
   def new
-    @publication = params[:type].capitalize.constantize.new
+    add_publication
   end
 
   # GET /publications/1/edit
@@ -21,12 +21,18 @@ class Admin::PublicationsController < AdminController
 
   # POST /publications
   def create
-    register_publication
+    update_publication_list
   end
 
   # PATCH/PUT /publications/1
   def update
-    add_publication
+    respond_to do |format|
+      if @publication.update publication_params
+        format.html { redirect_to admin_publication_path(@publication, type: params[:type]), notice: 'Publication was successfully updated.' }
+      else
+        format.html { render :edit }
+      end
+    end
   end
 
   # DELETE /publications/1
@@ -35,6 +41,31 @@ class Admin::PublicationsController < AdminController
     respond_to do |format|
       format.html { redirect_to admin_publications_url, notice: 'Publication was successfully destroyed.' }
     end
+  end
+
+  def update_publication_list
+    @publication = params[:type].capitalize.constantize.new publication_params
+
+    respond_to do |format|
+      if @publication.save
+        format.html { redirect_to admin_publication_path(@publication, type: params[:type]), notice: 'Publication was successfully created.' }
+      else
+        format.html { render :new }
+      end
+    end
+  end
+
+  def add_publication
+    @publication = params[:type].capitalize.constantize.new
+  end
+
+  def obtain_the_publication_list
+    @books     = Book.library current_library
+    @magazines = Magazine.library current_library
+  end
+
+  def create_as_the_adding_date
+    DateTime.now
   end
 
   private
@@ -52,31 +83,5 @@ class Admin::PublicationsController < AdminController
       params.require(params[:type]).permit(:library_id, :age_limit, :status, :author, :name, :count, :stock, :issn, :isbn, :interval)
     end
 
-    def register_publication
-      @publication = params[:type].capitalize.constantize.new publication_params
-
-      respond_to do |format|
-        if @publication.save
-          format.html { redirect_to admin_publication_path(@publication, type: params[:type]), notice: 'Publication was successfully created.' }
-        else
-          format.html { render :new }
-        end
-      end
-    end
-
-    def add_publication
-      respond_to do |format|
-        if @publication.update publication_params
-          format.html { redirect_to admin_publication_path(@publication, type: params[:type]), notice: 'Publication was successfully updated.' }
-        else
-          format.html { render :edit }
-        end
-      end
-    end
-
-    def obtain_the_publication_list
-      @books     = Book.library current_library
-      @magazines = Magazine.library current_library
-    end
 
 end

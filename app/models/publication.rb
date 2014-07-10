@@ -32,9 +32,9 @@ class Publication < ActiveRecord::Base
   class << self
     def search(query)
       ret = {}
-      books = Book.where(Book.arel_table[:name].eq(query).or(Book.arel_table[:author].eq(query)).or(Book.arel_table[:isbn].eq(query)))
+      books     = Book.where(Book.arel_table[:name].eq(query).or(Book.arel_table[:author].eq(query)).or(Book.arel_table[:isbn].eq(query)))
       magazines = Magazine.where(Magazine.arel_table[:name].eq(query).or(Magazine.arel_table[:author].eq(query)).or(Magazine.arel_table[:issn].eq(query)))
-      ret[:books] = if books.present? then books else [] end
+      ret[:books]     = if books.present? then books else [] end
       ret[:magazines] = if magazines.present? then magazines else [] end
       return ret
     end
