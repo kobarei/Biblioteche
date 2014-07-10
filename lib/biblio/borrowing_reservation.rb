@@ -15,8 +15,6 @@ module Biblio
           errors.add(:base, "すでにレンタルしています") unless no_publication_borrowing?
         end
 
-        scope :alive, -> { where expired_at: nil }
-        scope :expired, -> { where.not expired_at: nil }
         scope :user, -> user_id { where user_id: user_id }
 
         after_create do
@@ -40,8 +38,6 @@ module Biblio
     def publication
       book || magazine
     end
-
-    private
 
     def pass_age_limit?
       return true if user.age >= publication.age_limit

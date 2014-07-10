@@ -1,10 +1,16 @@
 class Borrowing < ActiveRecord::Base
   include Biblio::BorrowingReservation
 
+  has_one :return
+
   validate on: :create do
     errors.add(:base, "借りるには予約する必要があります") unless no_need_reservation?
     errors.add(:base, "レンタル上限に達しています") unless no_max_reached?
   end
+
+  scope :alive, -> { where return_id: nil }
+  scope :expired, -> { where.not return_id: nil }
+
 
   before_create do
     self.expire_at = obtain_the_due_date

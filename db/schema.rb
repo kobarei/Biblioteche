@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140622160911) do
+ActiveRecord::Schema.define(version: 20140710050706) do
 
   create_table "books", force: true do |t|
     t.integer  "library_id"
@@ -36,10 +36,12 @@ ActiveRecord::Schema.define(version: 20140622160911) do
     t.datetime "expired_at"
     t.integer  "book_id"
     t.integer  "magazine_id"
+    t.integer  "return_id"
   end
 
   add_index "borrowings", ["book_id"], name: "index_borrowings_on_book_id"
   add_index "borrowings", ["magazine_id"], name: "index_borrowings_on_magazine_id"
+  add_index "borrowings", ["return_id"], name: "index_borrowings_on_return_id"
   add_index "borrowings", ["user_id"], name: "index_borrowings_on_user_id"
 
   create_table "libraries", force: true do |t|
@@ -93,6 +95,14 @@ ActiveRecord::Schema.define(version: 20140622160911) do
   add_index "reservations", ["book_id"], name: "index_reservations_on_book_id"
   add_index "reservations", ["magazine_id"], name: "index_reservations_on_magazine_id"
   add_index "reservations", ["user_id"], name: "index_reservations_on_user_id"
+
+  create_table "returns", force: true do |t|
+    t.integer  "borrowing_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "returns", ["borrowing_id"], name: "index_returns_on_borrowing_id"
 
   create_table "staffs", force: true do |t|
     t.string   "name"

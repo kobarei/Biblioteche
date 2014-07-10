@@ -39,10 +39,10 @@
 
     <p>
       <strong>Expired at:</strong>
-      <%= borrowing.expired_at %>
+      <%= borrowing.return.try(:created_at) %>
     </p>
-    <% if borrowing.expired_at.nil? %>
-      <%= link_to '返却', borrowing, method: :delete, data: { confirm: 'Are you sure?' } %>
+    <% if borrowing.return_id.nil? %>
+      <%= link_to '返却', returns_path(borrowing_id: borrowing.id), method: :post %>
     <% end %>
   <% end %>
 </div>

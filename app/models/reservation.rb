@@ -5,6 +5,9 @@ class Reservation < ActiveRecord::Base
     errors.add(:base, "すでに予約しています") unless no_publication_reservation?
   end
 
+  scope :alive, -> { where expired_at: nil }
+  scope :expired, -> { where.not expired_at: nil }
+
   before_create do
     self.expire_at = obtain_the_receipt_deadline
   end

@@ -5,6 +5,8 @@ Rails.application.routes.draw do
 
   resources :borrowings, only: [:create, :destroy], controller: :lend_publications
 
+  resources :returns, only: [:create], controller: :return_publications
+
   resources :libraries
 
   resources :publications, only: [:index, :show]
