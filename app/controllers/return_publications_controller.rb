@@ -7,6 +7,7 @@ class ReturnPublicationsController < ApplicationController
 
   def return_publication
     @borrowing           = Borrowing.find params[:borrowing_id]
+    @borrowing.publication.increment_stock_quantity_by_1
     @return              = Return.create(borrowing_id: @borrowing.id)
     @borrowing.return_id = @return.id
 
