@@ -3,6 +3,7 @@ class Publication < ActiveRecord::Base
 
   belongs_to :library
   has_many :borrowings
+  has_many :reservations
 
   enum status: %i(available away)
 

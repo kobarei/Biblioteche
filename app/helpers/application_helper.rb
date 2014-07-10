@@ -9,8 +9,12 @@ module ApplicationHelper
     render 'partials/select_menu'
   end
 
-  def choose_operation(str)
-    link_to str, '#', 'data-toggle' => "modal", 'data-target' => "#myModal"
+  def choose_operation(str, op)
+    if op == 2
+      link_to str, user_path(current_user)
+    else
+      link_to str, '#', 'data-toggle' => "modal", 'data-target' => "#myModal"
+    end
   end
 
   def show_search_box
