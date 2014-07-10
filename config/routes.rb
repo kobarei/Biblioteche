@@ -7,8 +7,6 @@ Rails.application.routes.draw do
 
   resources :returns, only: [:create], controller: :return_publications
 
-  resources :libraries
-
   resources :publications, only: [:index, :show]
 
   resources :books, only: :show
